@@ -16,7 +16,7 @@ Open `http://127.0.0.1:8000/`. Python 3.8+ and its standard library are sufficie
 
 ## Deployment
 
-In the repository's **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**. The `Publish report to GitHub Pages` workflow deploys `docs/` on the default branch. The initial local publication branch is `codex/initial-publication`; the workflow follows the repository's default branch rather than hard-coding a name. If changing the default branch later, no workflow edit is required.
+In the repository's **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**. The `Publish report to GitHub Pages` workflow deploys `docs/` on the default branch. The primary branch is `main`. Set it as the repository default under Settings > General > Default branch; the workflow follows the repository default. If changing the default branch later, no workflow edit is required.
 
 For a manual deployment, open **Actions → Publish report to GitHub Pages → Run workflow**, selecting the default branch. No personal access token needs to be committed or added to the website. The workflow uses GitHub's built-in deployment credentials.
 
