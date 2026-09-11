@@ -19,6 +19,7 @@ jobs:
   deploy:
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
+    # Repository Settings > Environments > github-pages must allow main.
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
