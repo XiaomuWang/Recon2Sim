@@ -1,6 +1,8 @@
 name: Publish report to GitHub Pages
 on:
   push:
+    branches:
+      - main
     paths:
       - 'docs/**'
       - 'tools/check_pages.py'
