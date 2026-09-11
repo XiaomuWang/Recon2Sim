@@ -1,0 +1,22 @@
+{
+  "scene_id": "0508656",
+  "name": "MeituanBrake0508656",
+  "video_dir": "data\\美团_LA71AUB1XS0508656_0806_变道后急刹",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "white_following_car",
+    "blue_box_courier",
+    "silver_suv_late"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.0,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

@@ -1,0 +1,24 @@
+{
+  "scene_id": "0512189",
+  "name": "MeituanLane0512189",
+  "video_dir": "data\\美团_LA71AUB13S0512189_0814_变道",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "green_delivery_van",
+    "silver_minivan",
+    "white_box_truck",
+    "bus_teal",
+    "bus_yellow_ad"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.0,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

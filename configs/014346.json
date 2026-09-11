@@ -1,0 +1,22 @@
+{
+  "scene_id": "014346",
+  "name": "NanshanGate014346",
+  "video_dir": "data\\萝卜快跑_LNDEA7HF1SH014346_0807_直行（右侧货车横向驶出）",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "gate_truck",
+    "worker_orange",
+    "cargo_tricycle"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.0,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

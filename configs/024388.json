@@ -1,0 +1,24 @@
+{
+  "scene_id": "024388",
+  "name": "LuoboTurn024388",
+  "video_dir": "data\\萝卜运力_LNDEA7HF1SH024388_0814_路口右转",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "box_truck",
+    "cross_person_1",
+    "cross_person_2",
+    "late_pair_1",
+    "late_pair_2"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.0,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

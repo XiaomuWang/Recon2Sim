@@ -1,0 +1,160 @@
+[
+  {
+    "scene_id": "014346",
+    "name": "NanshanGate014346",
+    "video_dir": "data\\萝卜快跑_LNDEA7HF1SH014346_0807_直行（右侧货车横向驶出）",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "gate_truck",
+      "worker_orange",
+      "cargo_tricycle"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "019742",
+    "name": "UrbanBrake019742",
+    "video_dir": "data\\萝卜快跑_LNDEA7HF1SH019742_0811_避让逆行非机动车急刹",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "wrongway_orange_rider",
+      "wrongway_white_rider"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "016955",
+    "name": "GreenRail016955",
+    "video_dir": "data\\萝卜快跑_LNDEA7HF3SH016955_0824_路口右转",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "sweeper",
+      "cross_scooter_a",
+      "cross_scooter_b",
+      "coach"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.06666666666666667,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "024388",
+    "name": "LuoboTurn024388",
+    "video_dir": "data\\萝卜运力_LNDEA7HF1SH024388_0814_路口右转",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "box_truck",
+      "cross_person_1",
+      "cross_person_2",
+      "late_pair_1",
+      "late_pair_2"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "0512189",
+    "name": "MeituanLane0512189",
+    "video_dir": "data\\美团_LA71AUB13S0512189_0814_变道",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "green_delivery_van",
+      "silver_minivan",
+      "white_box_truck",
+      "bus_teal",
+      "bus_yellow_ad"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "0508656",
+    "name": "MeituanBrake0508656",
+    "video_dir": "data\\美团_LA71AUB1XS0508656_0806_变道后急刹",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "white_following_car",
+      "blue_box_courier",
+      "silver_suv_late"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "rear": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  },
+  {
+    "scene_id": "ANA031",
+    "name": "RainJunctionANA031",
+    "video_dir": "data\\新石器_LHTDA4B45SYANA031_0827_降速停驶",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "lead_silver",
+      "driver_gray",
+      "rear_dark"
+    ],
+    "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+    "camera_file_time_offsets_s": {
+      "front": 0.0,
+      "left": 0.9,
+      "right": 7.4,
+      "rear": 7.5
+    },
+    "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+    "road_margin_m": 0.5,
+    "carla_host": "localhost",
+    "carla_port": 2000
+  }
+]

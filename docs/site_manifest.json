@@ -1,0 +1,278 @@
+{
+  "scene_order": [
+    "024388",
+    "0512189",
+    "0508656",
+    "ANA031",
+    "014346",
+    "019742",
+    "016955"
+  ],
+  "files": [
+    {
+      "path": "024388/presentation/report.mp4",
+      "bytes": 77286739,
+      "sha256": "4108164e554e37c785b1a519688fd92438979dc45894dfc59ad93401ebc1e090"
+    },
+    {
+      "path": "024388/presentation/report_poster.png",
+      "bytes": 1148773,
+      "sha256": "b4b8c93c549807f12720192fff7149bc877c53490ed8669ffe65f8e328ed0680"
+    },
+    {
+      "path": "024388/analysis/ego_analysis.png",
+      "bytes": 167162,
+      "sha256": "386c2fe8d07a078f92df82e8f0b685be8599e83cdb58fd16191375c0d2ba03bc"
+    },
+    {
+      "path": "024388/analysis/ego_metrics.csv",
+      "bytes": 135222,
+      "sha256": "d75dae3470cf1fb4d25b7f39404a4f29698185f257985c0073197d9ae3204015"
+    },
+    {
+      "path": "024388/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 253901,
+      "sha256": "fc48f7b6db810af723efa60df9315f74cb1bf7325d5d5a65317075c14733ff36"
+    },
+    {
+      "path": "024388/entity_mapping.json",
+      "bytes": 45354,
+      "sha256": "686a1c0c2500cf24201cc69d30ddc4d44fbf2e7bc94ec50d173f950f582e3fc4"
+    },
+    {
+      "path": "024388/validation/carla_imported/runtime_report.json",
+      "bytes": 4696,
+      "sha256": "57818f57d8723995f52d6526a53cb64f533b56ed2a3d857440939c4c0e4ac39d"
+    },
+    {
+      "path": "0512189/presentation/report.mp4",
+      "bytes": 19769521,
+      "sha256": "13fa017df82c8e57172ee35a0c115ed5372deea7bcc847212b38463f1345d7aa"
+    },
+    {
+      "path": "0512189/presentation/report_poster.png",
+      "bytes": 1402952,
+      "sha256": "697086b5114bd42ea980b42d5d033fcc1c3b4662fadb9460ecb1d79b3405aa19"
+    },
+    {
+      "path": "0512189/analysis/ego_analysis.png",
+      "bytes": 143822,
+      "sha256": "74c98d5fcfad56d88cb88125b7ca397585e7f792f19347c9adc6884fa7e20c4b"
+    },
+    {
+      "path": "0512189/analysis/ego_metrics.csv",
+      "bytes": 69157,
+      "sha256": "3ee868d7b85a9f794730482c2299ddfd7e83a4f5edb2640e6811501dd6b26341"
+    },
+    {
+      "path": "0512189/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 145467,
+      "sha256": "9ab365c41e14507832277e3d3bddcb349231da682bfbe99ddca5560c06ff9e32"
+    },
+    {
+      "path": "0512189/entity_mapping.json",
+      "bytes": 43584,
+      "sha256": "2e1063b7df7235194d1faa4a8e9fa12a9934d2562febdfe49baf440534fd7d99"
+    },
+    {
+      "path": "0512189/validation/carla_imported/runtime_report.json",
+      "bytes": 4322,
+      "sha256": "f3d8bd129610cb1be7269d248225bc8cbb067aeb36e49f721b52ff06ab87eb16"
+    },
+    {
+      "path": "0508656/presentation/report.mp4",
+      "bytes": 52666985,
+      "sha256": "a99e4a8c64e4970551677d35b580e5f786fc377ecfc030a6a7712fe4eb9b3b5b"
+    },
+    {
+      "path": "0508656/presentation/report_poster.png",
+      "bytes": 1493589,
+      "sha256": "da6eaccf5f7d88db4abf3d61e8cd40fe94f92662c804886dd9def30174744e69"
+    },
+    {
+      "path": "0508656/analysis/ego_analysis.png",
+      "bytes": 201291,
+      "sha256": "5eb71ba294a30d452b6a7265086e8af091da0e1dca0b1a23aecb89c1d2d4c5cb"
+    },
+    {
+      "path": "0508656/analysis/ego_metrics.csv",
+      "bytes": 91384,
+      "sha256": "5972b87243c7588d7079cddd9a55a4c79f9fcf72f93e49aaacd120f9316915d3"
+    },
+    {
+      "path": "0508656/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 205058,
+      "sha256": "ebc4c2da43a90bce146979a6b6ee575c429297a675bcd3faba241fa97ef7937f"
+    },
+    {
+      "path": "0508656/entity_mapping.json",
+      "bytes": 34803,
+      "sha256": "77c5dad7b6fb36ea7a88bfc3be8ab4f22d02118c9a7d41ebef8111e5c02c69a5"
+    },
+    {
+      "path": "0508656/validation/carla_imported/runtime_report.json",
+      "bytes": 3683,
+      "sha256": "f17e6130f6a83abdb69e83690976425722e967116d6bd59f7d7b326ca7cfb098"
+    },
+    {
+      "path": "ANA031/presentation/report.mp4",
+      "bytes": 52009178,
+      "sha256": "3b08717093a9684e74e828e5fd62d3b80b96c787b57fbb059d77f4b055314ef0"
+    },
+    {
+      "path": "ANA031/presentation/report_poster.png",
+      "bytes": 1623023,
+      "sha256": "c993db3b795f5ee482345f103658213fa2d16949fc2db0c793d19822d746d0cb"
+    },
+    {
+      "path": "ANA031/analysis/ego_analysis.png",
+      "bytes": 148211,
+      "sha256": "d59466f33ed2703c49680592defcaa080fb2e9793995f726c5dbaf4520ea9ab6"
+    },
+    {
+      "path": "ANA031/analysis/ego_metrics.csv",
+      "bytes": 41175,
+      "sha256": "9bbeb47a3479d3b06dde025586d5b500c7292c3fc8273e9c7d88d41f3002747b"
+    },
+    {
+      "path": "ANA031/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 70967,
+      "sha256": "6b23e39176ffc140acb7fead9b07d8d719b5ca52a43f1a60de92a8eba7141e43"
+    },
+    {
+      "path": "ANA031/entity_mapping.json",
+      "bytes": 16187,
+      "sha256": "f94927970f9cf8d4840cd7e527784a619d74770b67811424f00eb9bbed7e256d"
+    },
+    {
+      "path": "ANA031/validation/carla_imported/runtime_report.json",
+      "bytes": 1854,
+      "sha256": "6ff3eb12cfae718678e83822875ace1062e23f2f55585c81f02a36f0fbbf0a62"
+    },
+    {
+      "path": "014346/presentation/report.mp4",
+      "bytes": 23321596,
+      "sha256": "ec57923d901aac93eef68dd69ad5bdad8a6673c7e4f60b4fa986674996e7ffc2"
+    },
+    {
+      "path": "014346/presentation/report_poster.png",
+      "bytes": 1492067,
+      "sha256": "2f8d23be57f8e69040ca9284db563ad1bf71070a36853b60ab90e1249d98480d"
+    },
+    {
+      "path": "014346/analysis/ego_analysis.png",
+      "bytes": 161927,
+      "sha256": "b28dbcbc4465e831a5822480efb8d699208b52f51cd6cc881b3f08a63a21336e"
+    },
+    {
+      "path": "014346/analysis/ego_metrics.csv",
+      "bytes": 81128,
+      "sha256": "c4df7f7a3accca75118994e20a23d390e844d49fd237811b99d77bf0b65abd2d"
+    },
+    {
+      "path": "014346/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 169894,
+      "sha256": "899fcb75be8568f5e2ff219f3d102a35b03cc4fcc6baac0bacf839d41e842a1f"
+    },
+    {
+      "path": "014346/entity_mapping.json",
+      "bytes": 13385,
+      "sha256": "c0e3e9cd1ffc2100261ca055cfd4031adde3157157f8fbab8a4d27e60823b83e"
+    },
+    {
+      "path": "014346/validation/carla_imported/runtime_report.json",
+      "bytes": 1898,
+      "sha256": "6446628cfca9b19f37172572a8935d7efea8d07e8c1eabdaea8b1fe41263bfd5"
+    },
+    {
+      "path": "019742/presentation/report.mp4",
+      "bytes": 63684124,
+      "sha256": "05f95a8690f0631c9f6df19eb225563901e476687c7cf86b9a2315ffb32b679a"
+    },
+    {
+      "path": "019742/presentation/report_poster.png",
+      "bytes": 1521503,
+      "sha256": "e689e492f0f27b4ef6c9bb08134278fb0d9c74eb0b60854285bd4837b75e3a76"
+    },
+    {
+      "path": "019742/analysis/ego_analysis.png",
+      "bytes": 222233,
+      "sha256": "047e341f3feb650817758c99d513dfe7cd198a3e13a9638cb940a13fd8573708"
+    },
+    {
+      "path": "019742/analysis/ego_metrics.csv",
+      "bytes": 130008,
+      "sha256": "3883bcb918a0d3b412ab79bbbd33ce02f7f5f4b7f4d728935156f5378250a657"
+    },
+    {
+      "path": "019742/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 267180,
+      "sha256": "eb80039942c0a14efac34e9c5a0a52d37a9326fcbebfb7afd12c1ea34b9a4228"
+    },
+    {
+      "path": "019742/entity_mapping.json",
+      "bytes": 43877,
+      "sha256": "eb368dcff272317942c449fc899328d04c2a469e027fb3aaaa6191b46168a29f"
+    },
+    {
+      "path": "019742/validation/carla_imported/runtime_report.json",
+      "bytes": 4410,
+      "sha256": "4f972f7cf8bc154c56d83d7a6f383c4e21ef1e8ce926be4776ee5ed98c411619"
+    },
+    {
+      "path": "016955/presentation/report.mp4",
+      "bytes": 55897683,
+      "sha256": "1386768ea89b042a4ad4c8a9bd89c84091ea4699b3a195b2c7e4c6ced89efff1"
+    },
+    {
+      "path": "016955/presentation/report_poster.png",
+      "bytes": 1345745,
+      "sha256": "7df22435679d139a31a0fbea90f94c10b68a4569f6300ca095f9b34b4d8e55df"
+    },
+    {
+      "path": "016955/analysis/ego_analysis.png",
+      "bytes": 215103,
+      "sha256": "072173406d4fa1e63471e686eae33b37a159b54b8e0f7a2e739c1ef1d459a299"
+    },
+    {
+      "path": "016955/analysis/ego_metrics.csv",
+      "bytes": 153774,
+      "sha256": "320f5239b02e3d0a4f885f0e59292fec47c80b917a2cb080a8c967900602ce6f"
+    },
+    {
+      "path": "016955/validation/carla_imported/ego_telemetry.csv",
+      "bytes": 313459,
+      "sha256": "f00c14bea65cad68e60f824ce1e03409ccbeeda34600ecb2157be3146cc4ab57"
+    },
+    {
+      "path": "016955/entity_mapping.json",
+      "bytes": 37339,
+      "sha256": "42fb4e77bb77de6b10873e15292b3d4ecc171cd3ec5c82b64e41676eb77bc21d"
+    },
+    {
+      "path": "016955/validation/carla_imported/runtime_report.json",
+      "bytes": 3748,
+      "sha256": "f7d7ee0d73e8feb579b1ed11af65e35b1d7c8f34070116c40fd84e46eb8c5b9e"
+    },
+    {
+      "path": "presentation/highlights.mp4",
+      "bytes": 50706358,
+      "sha256": "f183ff6a0996720186190ae3f53ff51de4b04d58f6e1841b430ca3a74712c113"
+    },
+    {
+      "path": "index.html",
+      "bytes": 26625,
+      "sha256": "f7f74c040974d68bea2b0eb9fcb587cdc92786805cee2b131bdc254ce4e09178"
+    },
+    {
+      "path": "csv_viewer.html",
+      "bytes": 6575,
+      "sha256": "09186ed29b96935fd7ef293892d2bc774a7b3401bce199dfabc237b46a9dcd02"
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

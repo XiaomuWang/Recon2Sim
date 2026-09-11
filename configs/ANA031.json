@@ -1,0 +1,22 @@
+{
+  "scene_id": "ANA031",
+  "name": "RainJunctionANA031",
+  "video_dir": "data\\新石器_LHTDA4B45SYANA031_0827_降速停驶",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "lead_silver",
+    "driver_gray",
+    "rear_dark"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "left": 0.9,
+    "right": 7.4,
+    "rear": 7.5
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

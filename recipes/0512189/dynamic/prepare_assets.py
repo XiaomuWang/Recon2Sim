@@ -1,0 +1,3 @@
+from pathlib import Path
+p=Path('dynamic_replay_0512189/replay_carla.py');s=p.read_text(encoding='utf-8').replace('Require the supplied truck/trike custom props','Require the optional delivery van, tanker, truck and bus props').replace('Replay seconds, source video time minus 52','Replay seconds; same as source front.mp4 file time');p.write_text(s,encoding='utf-8')
+s=Path('dynamic_replay_014346/scripts/build_dynamic_assets.py').read_text();s=s[:s.index('def export(o,name):')];s=s.replace('random.seed(14346)','random.seed(512189)');Path('dynamic_replay_0512189/scripts/build_dynamic_assets.py').write_text(s,encoding='utf-8')

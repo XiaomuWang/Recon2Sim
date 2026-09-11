@@ -1,0 +1,27 @@
+# Track an explicit source/site allowlist; local reconstruction data stays local.
+/*
+!/.gitignore
+!/.gitattributes
+!/.github/
+!/a2s/
+!/configs/
+!/recipes/
+!/scripts/
+!/templates/
+!/tests/
+!/tools/
+!/docs/
+!/README.md
+!/FBX_IMPORT.md
+!/PUBLISHING.md
+!/requirements.txt
+!/start_report_lan.cmd
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.pem
+*.key
+**/id_rsa*
+**/id_ed25519*
+**/known_hosts*

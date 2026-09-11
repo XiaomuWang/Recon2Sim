@@ -1,0 +1,57 @@
+{
+  "scene_id": "014346",
+  "success": true,
+  "server_version": "0.9.15",
+  "client_version": "0.9.15",
+  "frames": 1071,
+  "full_duration_capture": true,
+  "fbx_runtime_verified": true,
+  "imported_geometry_complete": true,
+  "imported_environment_object_count": 136,
+  "missing_actor_ids": [],
+  "activated_actor_ids": [
+    "cargo_tricycle",
+    "delivery_scooter",
+    "ego",
+    "gate_truck",
+    "oncoming_truck",
+    "parked_scooter_1",
+    "parked_scooter_2",
+    "silver_sedan",
+    "worker_gray",
+    "worker_orange"
+  ],
+  "max_ego_origin_error_m": 7.63311891205376e-06,
+  "max_actor_origin_errors_m": {
+    "ego": 7.63311891205376e-06,
+    "oncoming_truck": 1.6731820551285637e-06,
+    "gate_truck": 7.63311891205376e-06,
+    "cargo_tricycle": 7.64428114052862e-06,
+    "parked_scooter_1": 3.948807716369629e-06,
+    "parked_scooter_2": 3.948807716369629e-06,
+    "worker_orange": 9.5367431640625e-07,
+    "delivery_scooter": 7.68876816437114e-06,
+    "worker_gray": 1.9073486328125e-06,
+    "silver_sedan": 7.68876816437114e-06
+  },
+  "max_actor_yaw_errors_deg": {
+    "ego": 2.765655517578125e-05,
+    "oncoming_truck": 3.0517578125e-05,
+    "gate_truck": 6.866455078125e-05,
+    "cargo_tricycle": 6.103515625e-05,
+    "parked_scooter_1": 0,
+    "parked_scooter_2": 3.0517578125e-05,
+    "worker_orange": 7.62939453125e-05,
+    "delivery_scooter": 5.53131103515625e-05,
+    "worker_gray": 0,
+    "silver_sedan": 5.340576171875e-05
+  },
+  "command_submission": "apply_batch_sync before tick",
+  "chase_camera": "independent world camera; heading smoothing time constant 1 s",
+  "fresh_world_loaded": true,
+  "road_surface_check": {
+    "misses": 0,
+    "max_error_m": 0.00019741058349609375
+  },
+  "scope": "Published summary of completed runtime verification; execution consistency is not real-world reconstruction accuracy."
+}

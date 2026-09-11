@@ -1,0 +1,11 @@
+name: Portable checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  report-server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -p test_report_server.py -v
+      - run: python3 tools/check_pages.py

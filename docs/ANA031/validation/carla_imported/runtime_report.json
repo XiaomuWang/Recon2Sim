@@ -1,0 +1,63 @@
+{
+  "scene_id": "ANA031",
+  "success": true,
+  "server_version": "0.9.15",
+  "client_version": "0.9.15",
+  "frames": 638,
+  "full_duration_capture": true,
+  "fbx_runtime_verified": true,
+  "imported_geometry_complete": true,
+  "imported_environment_object_count": 166,
+  "missing_actor_ids": [],
+  "activated_actor_ids": [
+    "driver_gray",
+    "ego",
+    "lead_silver",
+    "left_white",
+    "opposing_a",
+    "opposing_b",
+    "queue_sedan",
+    "rear_dark",
+    "right_outer",
+    "right_silver",
+    "right_suv",
+    "taxi_left"
+  ],
+  "max_ego_origin_error_m": 7.62939453125e-06,
+  "max_actor_origin_errors_m": {
+    "ego": 7.62939453125e-06,
+    "lead_silver": 3.814697265625e-06,
+    "queue_sedan": 1.9408762454986572e-06,
+    "left_white": 7.630325853824615e-06,
+    "right_suv": 8.87288751982851e-06,
+    "right_outer": 4.623085260391235e-06,
+    "right_silver": 1.52587890625e-05,
+    "taxi_left": 1.5943762264214456e-05,
+    "rear_dark": 1.52587890625e-05,
+    "opposing_a": 1.52587890625e-05,
+    "opposing_b": 1.52587890625e-05,
+    "driver_gray": 5.331201577973843e-07
+  },
+  "max_actor_yaw_errors_deg": {
+    "ego": 0,
+    "lead_silver": 0,
+    "queue_sedan": 0,
+    "left_white": 0,
+    "right_suv": 0,
+    "right_outer": 0,
+    "right_silver": 0,
+    "taxi_left": 0,
+    "rear_dark": 0,
+    "opposing_a": 3.0517578125e-05,
+    "opposing_b": 3.0517578125e-05,
+    "driver_gray": 6.866455078125e-05
+  },
+  "command_submission": "apply_batch_sync before tick",
+  "chase_camera": "independent world camera; heading smoothing time constant 1 s",
+  "fresh_world_loaded": true,
+  "road_surface_check": {
+    "misses": 0,
+    "max_error_m": 0.0
+  },
+  "scope": "Published summary of completed runtime verification; execution consistency is not real-world reconstruction accuracy."
+}

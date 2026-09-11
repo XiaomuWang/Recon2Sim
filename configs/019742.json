@@ -1,0 +1,21 @@
+{
+  "scene_id": "019742",
+  "name": "UrbanBrake019742",
+  "video_dir": "data\\萝卜快跑_LNDEA7HF1SH019742_0811_避让逆行非机动车急刹",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "wrongway_orange_rider",
+    "wrongway_white_rider"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.0,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}

@@ -1,0 +1,1258 @@
+{
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "green_delivery_van",
+    "silver_minivan",
+    "white_box_truck",
+    "bus_teal",
+    "bus_yellow_ad"
+  ],
+  "actors": [
+    {
+      "actor_id": "ego",
+      "entity_name": "美团自车",
+      "type": "car",
+      "source_category": "car",
+      "role": "ego",
+      "carla_blueprint": "vehicle.nissan.micra",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.nissan.micra",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": "static.prop.meituan_delivery_ego",
+      "color": "237,221,62",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "ego",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 0.0,
+        "y": 7.15,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 3.6,
+        "width": 1.65,
+        "height": 1.8
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Own body unseen completely; stock Micra is a functional substitute, not original delivery body. Lateral movement around 81-88s follows front lane line and right parking landmarks.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "gray_departing_sedan",
+      "entity_name": "开头右前灰色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.tesla.model3",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "110,114,119",
+      "start_time_s": 0.0,
+      "end_time_s": 23.0,
+      "initial_state": {
+        "actor_id": "gray_departing_sedan",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 7.0,
+        "y": 8.9,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 2.823298232982343
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Front 0-8; leaves the near right front. Distant continuation inferred.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "dark_front_suv",
+      "entity_name": "左前深灰SUV",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.audi.etron",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.audi.etron",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "46,44,52",
+      "start_time_s": 0.0,
+      "end_time_s": 92.0,
+      "initial_state": {
+        "actor_id": "dark_front_suv",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 7.5,
+        "y": 4.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.1771817718177305
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.95,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Front 0-48 nearest left-front SUV, then departs; later occluded by green van.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "inner_black_mpv",
+      "entity_name": "内侧黑色MPV",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.mercedes.coupe_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.mercedes.coupe_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "28,32,34",
+      "start_time_s": 0.0,
+      "end_time_s": 97.0,
+      "initial_state": {
+        "actor_id": "inner_black_mpv",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 9.0,
+        "y": 1.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.3538235382353848
+      },
+      "dimensions_m": {
+        "length": 5,
+        "width": 1.95,
+        "height": 1.8
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Front-left inner lane, slowly queues then advances.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "green_delivery_van",
+      "entity_name": "左侧绿色货运面包车",
+      "type": "van",
+      "source_category": "van",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.mercedes.sprinter",
+      "fallback_blueprint": "vehicle.mercedes.sprinter",
+      "blueprint_candidates": [
+        "vehicle.mercedes.sprinter"
+      ],
+      "custom_blueprint": "static.prop.meituan_green_van",
+      "color": "26,139,100",
+      "start_time_s": 0.0,
+      "end_time_s": 95.0,
+      "initial_state": {
+        "actor_id": "green_delivery_van",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -5.0,
+        "y": 4.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 1.42438424384244
+      },
+      "dimensions_m": {
+        "length": 5.6,
+        "width": 2.0,
+        "height": 2.6
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "high identity; metric positions estimated",
+      "notes": "Strong front/left/rear association; beside ego until ~46s, then front-left until traffic restarts.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "silver_minivan",
+      "entity_name": "接替绿色车位置的银色面包车",
+      "type": "van",
+      "source_category": "van",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.volkswagen.t2_2021",
+      "fallback_blueprint": "vehicle.mercedes.sprinter",
+      "blueprint_candidates": [
+        "vehicle.volkswagen.t2_2021",
+        "vehicle.mercedes.sprinter"
+      ],
+      "custom_blueprint": null,
+      "color": "176,182,178",
+      "start_time_s": 0.0,
+      "end_time_s": 98.0,
+      "initial_state": {
+        "actor_id": "silver_minivan",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -19.0,
+        "y": 4.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.85,
+        "height": 1.9
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Left 56-84 clearly shows silver minivan at ego side; reference timestamps offset about 3-4 s.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "red_tanker",
+      "entity_name": "从右侧驶过的红头罐车",
+      "type": "truck",
+      "source_category": "truck",
+      "role": "context",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": "static.prop.meituan_tanker",
+      "color": "164,38,44",
+      "start_time_s": 0.0,
+      "end_time_s": 62.0,
+      "initial_state": {
+        "actor_id": "red_tanker",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -56.0,
+        "y": 9.7,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 3.5447154471544424
+      },
+      "dimensions_m": {
+        "length": 12.5,
+        "width": 2.5,
+        "height": 3.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "high identity; metric positions estimated",
+      "notes": "Rear approach then right 12-18 and front 12-22. Native truck substitute differs from tanker.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "right_dark_sedan_1",
+      "entity_name": "右侧通过的第一辆深色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "58,64,65",
+      "start_time_s": 12.0,
+      "end_time_s": 66.0,
+      "initial_state": {
+        "actor_id": "right_dark_sedan_1",
+        "replay_time_s": 12.0,
+        "source_video_time_s": 12.0,
+        "x": -48.0,
+        "y": 9.8,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 3.294722947229361
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Front/rear/right 22-28; linked using vehicle color and passing order.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "right_dark_sedan_2",
+      "entity_name": "随后通过的黑色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "25,30,31",
+      "start_time_s": 18.0,
+      "end_time_s": 84.0,
+      "initial_state": {
+        "actor_id": "right_dark_sedan_2",
+        "replay_time_s": 18.0,
+        "source_video_time_s": 18.0,
+        "x": -43.0,
+        "y": 9.8,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 3.9359793597936537
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium-low identity; metric positions estimated",
+      "notes": "Separate car after first dark sedan; brief occlusions create identity uncertainty.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "white_box_truck",
+      "entity_name": "右侧白色厢式货车",
+      "type": "truck",
+      "source_category": "truck",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": "static.prop.meituan_boxtruck",
+      "color": "227,227,216",
+      "start_time_s": 30.0,
+      "end_time_s": 96.0,
+      "initial_state": {
+        "actor_id": "white_box_truck",
+        "replay_time_s": 30.0,
+        "source_video_time_s": 30.0,
+        "x": -57.0,
+        "y": 9.7,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 2.4680346803469306
+      },
+      "dimensions_m": {
+        "length": 6.4,
+        "width": 2.2,
+        "height": 3.1
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "high identity; metric positions estimated",
+      "notes": "Rear approach 38-46; right side 46-52; remains in front during 56-80. Distinct from parked cab-over truck.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "front_brown_truck",
+      "entity_name": "前方排队的棕色货车",
+      "type": "truck",
+      "source_category": "truck",
+      "role": "context",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": null,
+      "color": "118,74,60",
+      "start_time_s": 0.0,
+      "end_time_s": 90.0,
+      "initial_state": {
+        "actor_id": "front_brown_truck",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 28.0,
+        "y": 5.35,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.9378993789937645
+      },
+      "dimensions_m": {
+        "length": 8.4,
+        "width": 2.4,
+        "height": 3.2
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Repeated front view queue anchor; distant pose lower confidence.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "inner_red_truck",
+      "entity_name": "内侧红色货车",
+      "type": "truck",
+      "source_category": "truck",
+      "role": "context",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": null,
+      "color": "152,39,40",
+      "start_time_s": 0.0,
+      "end_time_s": 103.0,
+      "initial_state": {
+        "actor_id": "inner_red_truck",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -7.0,
+        "y": 1.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.3074130741307315
+      },
+      "dimensions_m": {
+        "length": 8.5,
+        "width": 2.45,
+        "height": 3.0
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Left camera shows red cab toward +X behind black MPV. Same-direction interpretation, not opposing traffic.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "white_sedan_middle",
+      "entity_name": "后方白色新能源轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.tesla.model3",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "233,236,230",
+      "start_time_s": 42.0,
+      "end_time_s": 101.0,
+      "initial_state": {
+        "actor_id": "white_sedan_middle",
+        "replay_time_s": 42.0,
+        "source_video_time_s": 42.0,
+        "x": -45.0,
+        "y": 5.35,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 2.7476374763747597
+      },
+      "dimensions_m": {
+        "length": 4.7,
+        "width": 1.85,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Rear 60-84 approach, front 88 white sedan; front/rear identity match estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "small_white_van",
+      "entity_name": "内侧白色小货车",
+      "type": "van",
+      "source_category": "van",
+      "role": "context",
+      "carla_blueprint": "vehicle.mercedes.sprinter",
+      "fallback_blueprint": "vehicle.mercedes.sprinter",
+      "blueprint_candidates": [
+        "vehicle.mercedes.sprinter"
+      ],
+      "custom_blueprint": null,
+      "color": "225,226,218",
+      "start_time_s": 48.0,
+      "end_time_s": 105.0,
+      "initial_state": {
+        "actor_id": "small_white_van",
+        "replay_time_s": 48.0,
+        "source_video_time_s": 48.0,
+        "x": -30.0,
+        "y": 1.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.2847628476285336
+      },
+      "dimensions_m": {
+        "length": 4.7,
+        "width": 1.9,
+        "height": 2.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "low depth; metric positions estimated",
+      "notes": "Rear and left background, partly occluded by near-side minivan.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "red_inner_sedan",
+      "entity_name": "后段内侧红色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.audi.a2",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.audi.a2",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "177,29,43",
+      "start_time_s": 80.0,
+      "end_time_s": 102.0,
+      "initial_state": {
+        "actor_id": "red_inner_sedan",
+        "replay_time_s": 80.0,
+        "source_video_time_s": 80.0,
+        "x": 120.0,
+        "y": -5.35,
+        "z": 0.0,
+        "yaw_carla_deg": -179.99999979432002,
+        "speed": 6.266132661327023
+      },
+      "dimensions_m": {
+        "length": 4.6,
+        "width": 1.85,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Red car in left background; opposing-lane association is uncertain.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "bus_teal",
+      "entity_name": "第一辆青绿色公交车",
+      "type": "bus",
+      "source_category": "bus",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.volkswagen.t2",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.volkswagen.t2",
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": "static.prop.meituan_citybus",
+      "color": "39,154,149",
+      "start_time_s": 84.0,
+      "end_time_s": 105.0,
+      "initial_state": {
+        "actor_id": "bus_teal",
+        "replay_time_s": 84.0,
+        "source_video_time_s": 84.0,
+        "x": -25.0,
+        "y": 5.35,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 8.947409474095036
+      },
+      "dimensions_m": {
+        "length": 11.4,
+        "width": 2.5,
+        "height": 3.2
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Rear/left/front ~94-101 first city bus. Stock VW bus fallback is smaller; custom prop provides the city-bus silhouette.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "bus_yellow_ad",
+      "entity_name": "末段黑黄广告公交车",
+      "type": "bus",
+      "source_category": "bus",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.volkswagen.t2",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.volkswagen.t2",
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": "static.prop.meituan_adbus",
+      "color": "207,171,31",
+      "start_time_s": 90.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "bus_yellow_ad",
+        "replay_time_s": 90.0,
+        "source_video_time_s": 90.0,
+        "x": -28.0,
+        "y": 5.35,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 7.90393903939066
+      },
+      "dimensions_m": {
+        "length": 11.4,
+        "width": 2.5,
+        "height": 3.2
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "high identity; metric positions estimated",
+      "notes": "Second bus occupies left side from ~103s until clip end; paired with mirrored rear and left close-up.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "late_white_suv",
+      "entity_name": "末段后方白色SUV",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.audi.etron",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.audi.etron",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "231,232,223",
+      "start_time_s": 92.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "late_white_suv",
+        "replay_time_s": 92.0,
+        "source_video_time_s": 92.0,
+        "x": -29.0,
+        "y": 5.35,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.87174871748739
+      },
+      "dimensions_m": {
+        "length": 4.6,
+        "width": 1.85,
+        "height": 1.6
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Rear 108-118 close approach. Remains behind the advertising bus.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "late_black_sedan",
+      "entity_name": "末段后方黑色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "29,33,35",
+      "start_time_s": 94.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "late_black_sedan",
+        "replay_time_s": 94.0,
+        "source_video_time_s": 94.0,
+        "x": -38.0,
+        "y": 8.75,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.4418444184443535
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Rear/right final approach, behind ego.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "late_flatbed",
+      "entity_name": "末段内侧平板货车",
+      "type": "truck",
+      "source_category": "truck",
+      "role": "context",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": null,
+      "color": "146,61,43",
+      "start_time_s": 96.0,
+      "end_time_s": 118.0,
+      "initial_state": {
+        "actor_id": "late_flatbed",
+        "replay_time_s": 96.0,
+        "source_video_time_s": 96.0,
+        "x": -48.0,
+        "y": 1.95,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 8.267332673327099
+      },
+      "dimensions_m": {
+        "length": 10.4,
+        "width": 2.5,
+        "height": 2.8
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "low identity; metric positions estimated",
+      "notes": "Brief rear/left view of long red/brown bed after 108s; appearance approximated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_white_helmet",
+      "entity_name": "白盔骑行者",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "99,131,162",
+      "start_time_s": 12.0,
+      "end_time_s": 33.0,
+      "initial_state": {
+        "actor_id": "scooter_white_helmet",
+        "replay_time_s": 12.0,
+        "source_video_time_s": 12.0,
+        "x": -36.0,
+        "y": 10.42,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 4.327993279932621
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_yellow_1",
+      "entity_name": "黄色骑手",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "235,196,21",
+      "start_time_s": 24.0,
+      "end_time_s": 47.0,
+      "initial_state": {
+        "actor_id": "scooter_yellow_1",
+        "replay_time_s": 24.0,
+        "source_video_time_s": 24.0,
+        "x": -36.0,
+        "y": 10.05,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 4.327993279932852
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_pink",
+      "entity_name": "粉衣骑行者",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "213,160,169",
+      "start_time_s": 67.0,
+      "end_time_s": 87.0,
+      "initial_state": {
+        "actor_id": "scooter_pink",
+        "replay_time_s": 67.0,
+        "source_video_time_s": 67.0,
+        "x": -36.0,
+        "y": 10.05,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 4.327993279932852
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_gray",
+      "entity_name": "灰衣骑行者",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "119,124,117",
+      "start_time_s": 74.0,
+      "end_time_s": 94.0,
+      "initial_state": {
+        "actor_id": "scooter_gray",
+        "replay_time_s": 74.0,
+        "source_video_time_s": 74.0,
+        "x": -32.891549,
+        "y": 10.05,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 4.327993279932852
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_hivis",
+      "entity_name": "荧光黄骑行者",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "207,234,40",
+      "start_time_s": 93.0,
+      "end_time_s": 110.0,
+      "initial_state": {
+        "actor_id": "scooter_hivis",
+        "replay_time_s": 93.0,
+        "source_video_time_s": 93.0,
+        "x": 28.0,
+        "y": 10.05,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.995979959799835
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "scooter_dark_late",
+      "entity_name": "末段深色骑行者",
+      "type": "motorbike",
+      "source_category": "motorcycle",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "43,47,55",
+      "start_time_s": 105.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "scooter_dark_late",
+        "replay_time_s": 105.0,
+        "source_video_time_s": 105.0,
+        "x": 44.0,
+        "y": 10.05,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.995979959799729
+      },
+      "dimensions_m": {
+        "length": 2.0,
+        "width": 0.68,
+        "height": 1.7
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Observed right-edge pass. Stock scooter rider clothing cannot be forced to exact source colors; lateral clearance adjusted within uncertain image depth.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "pedestrian_purple",
+      "entity_name": "末段走向自车的紫衣行人",
+      "type": "pedestrian",
+      "source_category": "pedestrian",
+      "role": "context",
+      "carla_blueprint": "walker.pedestrian.0004",
+      "fallback_blueprint": "walker.pedestrian.0001",
+      "blueprint_candidates": [
+        "walker.pedestrian.0004",
+        "walker.pedestrian.0001"
+      ],
+      "custom_blueprint": null,
+      "color": null,
+      "start_time_s": 108.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "pedestrian_purple",
+        "replay_time_s": 108.0,
+        "source_video_time_s": 108.0,
+        "x": 98.0,
+        "y": 10.0,
+        "z": 0.0,
+        "yaw_carla_deg": -166.23369926818978,
+        "speed": 1.2869177932886504
+      },
+      "dimensions_m": {
+        "length": 0.5,
+        "width": 0.5,
+        "height": 1.75
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "high event; metric positions estimated",
+      "notes": "Front 112-120 approaching ego on outer-lane side; most visible 118-120.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "pedestrian_white",
+      "entity_name": "右侧人行道白衣行人",
+      "type": "pedestrian",
+      "source_category": "pedestrian",
+      "role": "context",
+      "carla_blueprint": "walker.pedestrian.0001",
+      "fallback_blueprint": "walker.pedestrian.0001",
+      "blueprint_candidates": [
+        "walker.pedestrian.0001"
+      ],
+      "custom_blueprint": null,
+      "color": null,
+      "start_time_s": 99.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "pedestrian_white",
+        "replay_time_s": 99.0,
+        "source_video_time_s": 99.0,
+        "x": 82.0,
+        "y": 13.7,
+        "z": 0.18,
+        "yaw_carla_deg": 0.0,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 0.5,
+        "width": 0.5,
+        "height": 1.72
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Front/right 104-118; identity across tree occlusion inferred.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_00",
+      "entity_name": "右侧停放车辆01",
+      "type": "truck",
+      "source_category": "parked_vehicle",
+      "role": "context",
+      "carla_blueprint": "vehicle.carlamotors.carlacola",
+      "fallback_blueprint": "vehicle.carlamotors.carlacola",
+      "blueprint_candidates": [
+        "vehicle.carlamotors.carlacola"
+      ],
+      "custom_blueprint": null,
+      "color": "213,219,204",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_00",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 14.0,
+        "y": 14.0,
+        "z": 0.0,
+        "yaw_carla_deg": -129.00000028231435,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 6.1,
+        "width": 2.15,
+        "height": 2.8
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Stationary parking reference, not a moving track. Slot mapping is estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_01",
+      "entity_name": "右侧停放车辆02",
+      "type": "car",
+      "source_category": "parked_vehicle",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "104,113,118",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_01",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 23.0,
+        "y": 14.0,
+        "z": 0.0,
+        "yaw_carla_deg": -129.00000028231435,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 4.7,
+        "width": 1.85,
+        "height": 1.5
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Stationary parking reference, not a moving track. Slot mapping is estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_02",
+      "entity_name": "右侧停放车辆03",
+      "type": "car",
+      "source_category": "parked_vehicle",
+      "role": "context",
+      "carla_blueprint": "vehicle.tesla.model3",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "58,65,68",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_02",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 32.0,
+        "y": 14.0,
+        "z": 0.0,
+        "yaw_carla_deg": -129.00000028231435,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 4.8,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Stationary parking reference, not a moving track. Slot mapping is estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_03",
+      "entity_name": "右侧停放车辆04",
+      "type": "car",
+      "source_category": "parked_vehicle",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "190,192,184",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_03",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 44.0,
+        "y": 14.0,
+        "z": 0.0,
+        "yaw_carla_deg": -129.00000028231435,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 4.7,
+        "width": 1.85,
+        "height": 1.5
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Stationary parking reference, not a moving track. Slot mapping is estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_04",
+      "entity_name": "右侧停放车辆05",
+      "type": "car",
+      "source_category": "parked_vehicle",
+      "role": "context",
+      "carla_blueprint": "vehicle.audi.etron",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.audi.etron",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "40,46,46",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_04",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 56.0,
+        "y": 14.0,
+        "z": 0.0,
+        "yaw_carla_deg": -129.00000028231435,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 4.9,
+        "width": 1.9,
+        "height": 1.7
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Stationary parking reference, not a moving track. Slot mapping is estimated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "parked_scooter",
+      "entity_name": "右侧牌杆旁停放电动车",
+      "type": "motorbike",
+      "source_category": "parked",
+      "role": "context",
+      "carla_blueprint": "vehicle.vespa.zx125",
+      "fallback_blueprint": "vehicle.yamaha.yzf",
+      "blueprint_candidates": [
+        "vehicle.vespa.zx125",
+        "vehicle.yamaha.yzf"
+      ],
+      "custom_blueprint": null,
+      "color": "35,47,42",
+      "start_time_s": 0.0,
+      "end_time_s": 120.0,
+      "initial_state": {
+        "actor_id": "parked_scooter",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 87.5,
+        "y": 12.7,
+        "z": 0.18,
+        "yaw_carla_deg": -15.00000012609945,
+        "speed": 0.0
+      },
+      "dimensions_m": {
+        "length": 1.8,
+        "width": 0.65,
+        "height": 1.4
+      },
+      "stationary": true,
+      "dimensions_status": "estimated",
+      "confidence": "medium; metric positions estimated",
+      "notes": "Visible in final front/right view.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    }
+  ]
+}

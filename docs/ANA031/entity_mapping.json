@@ -1,0 +1,452 @@
+{
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "lead_silver",
+    "driver_gray",
+    "rear_dark"
+  ],
+  "actors": [
+    {
+      "actor_id": "ego",
+      "entity_name": "新石器自车（小型替代蓝图）",
+      "type": "car",
+      "source_category": "car",
+      "role": "ego",
+      "carla_blueprint": "vehicle.micro.microlino",
+      "fallback_blueprint": "vehicle.audi.a2",
+      "blueprint_candidates": [
+        "vehicle.micro.microlino",
+        "vehicle.audi.a2"
+      ],
+      "custom_blueprint": null,
+      "color": "25,55,95",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "ego",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -91.0,
+        "y": 5.25,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 9.040890408904165
+      },
+      "dimensions_m": {
+        "length": 2.7,
+        "width": 1.3,
+        "height": 1.85
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Stops at front-file ~26.8 s. Static-flow timing blended 10%; total 91m scene-aligned distance is a visual estimate. Stock vehicle does not reproduce the delivery body.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "lead_silver",
+      "entity_name": "前方银灰轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "163,178,178",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "lead_silver",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -58.0,
+        "y": 5.25,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.993399933999369
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Same lead car tracked through front clip; stopped through visible 34.7s, later held by assumption. Gray-clothed pedestrian exits driver side; door opening not animated.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "queue_sedan",
+      "entity_name": "前方队列轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.tesla.model3",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "232,233,224",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "queue_sedan",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -24.0,
+        "y": 5.25,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.620346203462064
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Partly occluded ahead of lead car; farther tail held after front video ends.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "left_white",
+      "entity_name": "左前白色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.audi.a2",
+      "fallback_blueprint": "vehicle.lincoln.mkz_2020",
+      "blueprint_candidates": [
+        "vehicle.audi.a2",
+        "vehicle.lincoln.mkz_2020"
+      ],
+      "custom_blueprint": null,
+      "color": "232,233,224",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "left_white",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -112.0,
+        "y": 1.75,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 8.87210872108709
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Passes ego left then waits ahead. Lane and final offset constrained by left-side view.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "right_suv",
+      "entity_name": "右前白色 SUV",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.nissan.patrol_2021",
+      "fallback_blueprint": "vehicle.audi.etron",
+      "blueprint_candidates": [
+        "vehicle.nissan.patrol_2021",
+        "vehicle.audi.etron"
+      ],
+      "custom_blueprint": null,
+      "color": "232,233,224",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "right_suv",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -119.0,
+        "y": 8.75,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 9.248072480724904
+      },
+      "dimensions_m": {
+        "length": 4.7,
+        "width": 1.92,
+        "height": 1.72
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Right clip offset +7.4 seconds applied. Later stopping pose outside evidence held.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "right_outer",
+      "entity_name": "最右前方浅色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.toyota.prius",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.toyota.prius",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "209,210,203",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "right_outer",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -37.0,
+        "y": 12.25,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.994929949299496
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Low-confidence distant actor; shape and depth approximate.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "right_silver",
+      "entity_name": "右侧靠近的浅色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.audi.a2",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.audi.a2"
+      ],
+      "custom_blueprint": null,
+      "color": "218,219,211",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "right_silver",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -153.0,
+        "y": 8.75,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 8.80958809588137
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Cross-view identity association is plausible, not measured. Pink appearance comes from red light reflections; paint kept light gray.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "taxi_left",
+      "entity_name": "左侧蓝白出租车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.toyota.prius",
+      "fallback_blueprint": "vehicle.lincoln.mkz_2020",
+      "blueprint_candidates": [
+        "vehicle.toyota.prius",
+        "vehicle.lincoln.mkz_2020"
+      ],
+      "custom_blueprint": null,
+      "color": "92,140,188",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "taxi_left",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -165.0,
+        "y": 1.75,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 7.248132481324823
+      },
+      "dimensions_m": {
+        "length": 4.65,
+        "width": 1.85,
+        "height": 1.55
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Stock CARLA vehicle lacks blue-white taxi livery and roof sign. Enters left near field then creeps to stop.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "rear_dark",
+      "entity_name": "后方深色轿车",
+      "type": "car",
+      "source_category": "car",
+      "role": "accident_related",
+      "carla_blueprint": "vehicle.audi.etron",
+      "fallback_blueprint": "vehicle.lincoln.mkz_2020",
+      "blueprint_candidates": [
+        "vehicle.audi.etron",
+        "vehicle.lincoln.mkz_2020"
+      ],
+      "custom_blueprint": null,
+      "color": "39,43,48",
+      "start_time_s": 0.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "rear_dark",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": -163.0,
+        "y": 5.25,
+        "z": 0.0,
+        "yaw_carla_deg": 0.0,
+        "speed": 6.062310623106464
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Rear headlights obscure shape; stops behind ego. Position after last rear frame is held.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "opposing_a",
+      "entity_name": "对向浅色背景车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.tesla.model3",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "232,233,224",
+      "start_time_s": 0.0,
+      "end_time_s": 34.0,
+      "initial_state": {
+        "actor_id": "opposing_a",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 52.0,
+        "y": -5.25,
+        "z": 0.0,
+        "yaw_carla_deg": -179.99999979432002,
+        "speed": 5.937809378093718
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Low-confidence identity and timing; background stream proxy, not a uniquely measured vehicle.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "opposing_b",
+      "entity_name": "对向深色背景车",
+      "type": "car",
+      "source_category": "car",
+      "role": "context",
+      "carla_blueprint": "vehicle.lincoln.mkz_2020",
+      "fallback_blueprint": "vehicle.tesla.model3",
+      "blueprint_candidates": [
+        "vehicle.lincoln.mkz_2020",
+        "vehicle.tesla.model3"
+      ],
+      "custom_blueprint": null,
+      "color": "47,55,61",
+      "start_time_s": 0.0,
+      "end_time_s": 40.5,
+      "initial_state": {
+        "actor_id": "opposing_b",
+        "replay_time_s": 0.0,
+        "source_video_time_s": 0.0,
+        "x": 109.0,
+        "y": -8.75,
+        "z": 0.0,
+        "yaw_carla_deg": -179.99999979432002,
+        "speed": 6.500075000750039
+      },
+      "dimensions_m": {
+        "length": 4.85,
+        "width": 1.9,
+        "height": 1.5
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Low-confidence background stream proxy. Removed on leaving recovery extent.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    },
+    {
+      "actor_id": "driver_gray",
+      "entity_name": "灰衣行人（前车驾驶侧）",
+      "type": "pedestrian",
+      "source_category": "pedestrian",
+      "role": "accident_related",
+      "carla_blueprint": "walker.pedestrian.0004",
+      "fallback_blueprint": "walker.pedestrian.0001",
+      "blueprint_candidates": [
+        "walker.pedestrian.0004",
+        "walker.pedestrian.0001"
+      ],
+      "custom_blueprint": null,
+      "color": null,
+      "start_time_s": 31.0,
+      "end_time_s": 63.7,
+      "initial_state": {
+        "actor_id": "driver_gray",
+        "replay_time_s": 31.0,
+        "source_video_time_s": 31.0,
+        "x": 5.15,
+        "y": 3.85,
+        "z": 0.0,
+        "yaw_carla_deg": -90.0000001836389,
+        "speed": 0.46664991430524844
+      },
+      "dimensions_m": {
+        "length": 0.5,
+        "width": 0.5,
+        "height": 1.75
+      },
+      "stationary": false,
+      "dimensions_status": "estimated",
+      "confidence": "multi-view event ordering supported; metric depth, shape, occluded path and offsets estimated",
+      "notes": "Observed driver-side exit and approach to ego. Walking, leaning and gestures are root-path approximations; original face, identity and skeletal poses not reconstructed.",
+      "appearance_limit": "Stock fallback approximates appearance; bus/tricycle/sweeper and delivery ego may need supplied custom assets"
+    }
+  ]
+}

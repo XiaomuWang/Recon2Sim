@@ -1,0 +1,23 @@
+{
+  "scene_id": "016955",
+  "name": "GreenRail016955",
+  "video_dir": "data\\萝卜快跑_LNDEA7HF3SH016955_0824_路口右转",
+  "ego_actor_id": "ego",
+  "accident_actor_ids": [
+    "sweeper",
+    "cross_scooter_a",
+    "cross_scooter_b",
+    "coach"
+  ],
+  "role_basis": "Proposed from supplied event/identity anchors; editable, not legal fault attribution",
+  "camera_file_time_offsets_s": {
+    "front": 0.0,
+    "rear": 0.0,
+    "left": 0.06666666666666667,
+    "right": 0.0
+  },
+  "camera_sync_status": "estimated from supplied evidence; not hardware synchronized",
+  "road_margin_m": 0.5,
+  "carla_host": "localhost",
+  "carla_port": 2000
+}
