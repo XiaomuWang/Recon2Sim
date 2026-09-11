@@ -61,26 +61,30 @@ def build(sid,fps=10,mode='imported',poster_only=False):
     txt(layout,(130,16),NAMES[sid], 'title');txt(layout,(42,65),f'CASE {sid}   /   CARLA 0.9.15 运行验证   /   {len(entities["actors"])} 个重建目标',17,MUTED)
     txt(layout,(1460,36),'ACCIDENT  /  RECONSTRUCTION',17,MUTED)
     d.line((40,96,1880,96),fill=BORDER,width=1)
-    card(layout,(39,108,1241,816));txt(layout,(58,113),'主画面  ·  CARLA 主车跟随视角',18)
-    txt(layout,(862,115),'XODR + FBX 场景实机回放' if has_fbx else 'XODR 路网实机回放 · 未加载 FBX 环境',14,TEAL if has_fbx else ORANGE)
+    card(layout,(39,108,1241,816));txt(layout,(58,113),'仿真输出 · CARLA 事故场景复原回放',18)
+    txt(layout,(862,115),'主车跟随视角 · XODR + FBX' if has_fbx else 'XODR 路网实机回放 · 未加载 FBX 环境',14,TEAL if has_fbx else ORANGE)
     # Right references are ordered front/rear, then left/right.
     card(layout,(1280,108,1880,514))
+    txt(layout,(1297,112),'原始输入 · 四视角原始行车视频',18,'#89baff')
     for i,label in enumerate(['前视 FRONT','后视 REAR','左视 LEFT','右视 RIGHT']):
-        x=1290+(i%2)*300;y=118+(i//2)*198
-        txt(layout,(x+3,y),label,16,MUTED)
-        d.rectangle((x-1,y+30,x+281,y+189),outline=BORDER)
-    for x in [1280,1485,1690]:card(layout,(x,824,x+190,933))
-    txt(layout,(1297,837),'主车速度',16,MUTED);txt(layout,(1502,837),'纵向加速度*',16,MUTED);txt(layout,(1707,837),'累计路程',16,MUTED)
-    card(layout,(1280,526,1880,807));txt(layout,(1300,536),'路网俯视 · 全部有效目标',18)
+        x=1290+(i%2)*300;y=141+(i//2)*184
+        txt(layout,(x+3,y),label,14,MUTED)
+        d.rectangle((x-1,y+25,x+281,y+184),outline=BORDER)
+    txt(layout,(40,825),'主车运动分析',20,TEAL)
+    txt(layout,(205,830),'基于重建轨迹 · 曲线与当前指标随回放同步更新',14,MUTED)
+    d.line((590,841,1880,841),fill=BORDER,width=1)
+    for x in [1280,1485,1690]:card(layout,(x,857,x+190,937))
+    txt(layout,(1297,864),'主车速度',14,MUTED);txt(layout,(1502,864),'纵向加速度*',14,MUTED);txt(layout,(1707,864),'累计路程',14,MUTED)
+    card(layout,(1280,526,1880,807));txt(layout,(1300,536),'重建输出 · 路网与目标位置 · 俯视图',18)
     txt(layout,(1300,780),'● ego',14,'#ffc140');txt(layout,(1380,780),'● 事故相关',14,'#ff6b64');txt(layout,(1510,780),'● 其他目标',14,'#519dcb')
     road_base,point,scale=plan_base(root,(560,210))
-    speed,sp,(spt,spb)=chart([r['speed_kmh'] for r in series],times,(585,205),'速度曲线','km/h',TEAL)
-    accel,ap,(apt,apb)=chart([r['acceleration_m_s2'] for r in series],times,(585,205),'纵向加速度曲线*','m/s²',ORANGE,True)
-    layout.paste(speed,(40,837));layout.paste(accel,(655,837))
-    card(layout,(1280,946,1880,1063));txt(layout,(1297,956),'全程总结',17,TEAL)
-    txt(layout,(1297,984),f'行驶 {summary["distance_m"]:.1f} m   ·   最高速度 {summary["peak_speed_kmh"]:.1f} km/h',16)
-    txt(layout,(1297,1011),f'停车 {summary["stop_count"]} 次 / {summary["stopped_duration_s"]:.1f} s   ·   最大减速度 {abs(summary["maximum_deceleration_m_s2"]):.2f} m/s²',16)
-    txt(layout,(1297,1039),'总结为全时段统计；上方指标随回放时间更新。',13,MUTED)
+    speed,sp,(spt,spb)=chart([r['speed_kmh'] for r in series],times,(585,184),'主车速度曲线','km/h',TEAL)
+    accel,ap,(apt,apb)=chart([r['acceleration_m_s2'] for r in series],times,(585,184),'主车纵向加速度曲线*','m/s²',ORANGE,True)
+    layout.paste(speed,(40,857));layout.paste(accel,(655,857))
+    card(layout,(1280,945,1880,1043));txt(layout,(1297,950),'全程总结',16,TEAL)
+    txt(layout,(1297,974),f'行驶 {summary["distance_m"]:.1f} m   ·   最高速度 {summary["peak_speed_kmh"]:.1f} km/h',14)
+    txt(layout,(1297,997),f'停车 {summary["stop_count"]} 次 / {summary["stopped_duration_s"]:.1f} s   ·   最大减速度 {abs(summary["maximum_deceleration_m_s2"]):.2f} m/s²',14)
+    txt(layout,(1297,1021),'总结为全时段统计；上方指标随回放时间更新。',13,MUTED)
     txt(layout,(40,1052),'* 加速度由重建轨迹推导并作 1.0 s 平滑，非实测 CAN / IMU。原视频按已有时间估计对齐，参考窗 4 fps。',14,MUTED)
     reference=cv2.VideoCapture(str(root/'preview/six_panel_comparison.mp4'));ref_fps=reference.get(cv2.CAP_PROP_FPS);last_ref=-1;ref_frame=None
     roles={a['actor_id']:a['role'] for a in entities['actors']};colors={'ego':(255,193,64),'accident_related':(255,107,100),'context':(81,157,203)}
@@ -114,14 +118,14 @@ def build(sid,fps=10,mode='imported',poster_only=False):
                 last_ref=ref_index
             for i,v in enumerate(['front','rear','left','right']):
                 xx=(i%2)*480;yy=95+(i//2)*295;crop=ref_frame[yy:yy+270,xx:xx+480]
-                x=1290+(i%2)*300;y=118+(i//2)*198
-                im.paste(fit(crop,(280,158)),(x,y+31))
+                x=1290+(i%2)*300;y=141+(i//2)*184
+                im.paste(fit(crop,(280,158)),(x,y+26))
                 file_t=t+cfg['source_video_start_s']+cfg['camera_file_time_offsets_s'][v]
                 txt(im,(x+205,y+3),f'{file_t:.1f}s',14,MUTED)
             j=min(len(series)-1,int(round(t*10)));now=series[j]
-            txt(im,(1295,863),f'{now["speed_kmh"]:.1f}',40,TEAL);txt(im,(1423,907),'km/h',14,MUTED)
-            txt(im,(1500,863),f'{now["acceleration_m_s2"]:+.1f}',40,ORANGE);txt(im,(1635,907),'m/s²',14,MUTED)
-            txt(im,(1705,863),f'{now["distance_m"]:.0f}',40);txt(im,(1840,907),'m',14,MUTED)
+            txt(im,(1295,887),f'{now["speed_kmh"]:.1f}',32,TEAL);txt(im,(1423,916),'km/h',14,MUTED)
+            txt(im,(1500,887),f'{now["acceleration_m_s2"]:+.1f}',32,ORANGE);txt(im,(1635,916),'m/s²',14,MUTED)
+            txt(im,(1705,887),f'{now["distance_m"]:.0f}',32);txt(im,(1840,916),'m',14,MUTED)
             road=road_base.copy()
             for aid,rows in data.items():
                 p=interpolate(rows,t)
@@ -132,7 +136,7 @@ def build(sid,fps=10,mode='imported',poster_only=False):
                     cv2.circle(road,center,10,color,1,cv2.LINE_AA)
                     cv2.putText(road,'EGO',(center[0]+12,center[1]-8),cv2.FONT_HERSHEY_SIMPLEX,.42,color,1,cv2.LINE_AA)
             im.paste(Image.fromarray(road),(1300,566))
-            for xy,func,value,bounds in [((40,837),sp,now['speed_kmh'],(spt,spb)),((655,837),ap,now['acceleration_m_s2'],(apt,apb))]:
+            for xy,func,value,bounds in [((40,857),sp,now['speed_kmh'],(spt,spb)),((655,857),ap,now['acceleration_m_s2'],(apt,apb))]:
                 cx,cy=func(t,value);draw.line((xy[0]+cx,xy[1]+bounds[0],xy[0]+cx,xy[1]+bounds[1]),fill='#d9e5ee',width=1)
                 draw.ellipse((xy[0]+cx-4,xy[1]+cy-4,xy[0]+cx+4,xy[1]+cy+4),fill=WHITE)
             if proc:proc.stdin.write(np.asarray(im).tobytes())
@@ -151,8 +155,8 @@ def build(sid,fps=10,mode='imported',poster_only=False):
     write(dest/'report_manifest.json',dict(scene_id=sid,width=W,height=H,fps=fps,start_s=start,end_s=end,main_source='CARLA 0.9.15 '+mode+' runtime ego_chase',
         main_is_actual_carla=True,fbx_environment_loaded=has_fbx,reference_fps=ref_fps,analytics_source='reconstructed ego trajectory',full_duration=report['full_duration_capture'],
         body_yaw_verified=bool(report.get('max_actor_yaw_errors_deg')),chase_camera=report.get('chase_camera'),
-        runtime_report_sha256=sha(runtime_folder/'runtime_report.json'),layout_version='report_v2_right_reference_grid',
-        layout=dict(hero='upper_left',references=[['front','rear'],['left','right']],road='right_middle',charts=['lower_left_speed','lower_left_longitudinal_acceleration'],metrics='lower_right',summary='lower_right')))
+        runtime_report_sha256=sha(runtime_folder/'runtime_report.json'),layout_version='report_v3_input_output_labels',
+        layout=dict(hero='upper_left',references=[['front','rear'],['left','right']],road='right_middle',charts=['lower_left_speed','lower_left_longitudinal_acceleration'],metrics='lower_right',summary='lower_right',analytics_group='主车运动分析',input_title='四视角原始行车视频',output_title='CARLA 事故场景复原回放')))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--scene',default='all');p.add_argument('--fps',type=int,default=10);p.add_argument('--mode',choices=['imported','xodr'],default='imported');p.add_argument('--poster-only',action='store_true');a=p.parse_args()
