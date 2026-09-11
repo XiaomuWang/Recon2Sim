@@ -261,8 +261,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 26625,
-      "sha256": "f7f74c040974d68bea2b0eb9fcb587cdc92786805cee2b131bdc254ce4e09178"
+      "bytes": 26631,
+      "sha256": "c7a5a58f3bcdadb6657b66b6e92975a36c92a998e7aeba4191e05de63f0908a3"
     },
     {
       "path": "csv_viewer.html",

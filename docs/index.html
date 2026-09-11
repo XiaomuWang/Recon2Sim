@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>突破参数与画质限制，赋能多元自动驾驶方案</title>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>突破参数与画质限制，赋能跨车型自动驾驶方案</title>
 <style>
 :root{color-scheme:dark;--bg:#0a111c;--panel:#111d2c;--line:#26364a;--muted:#98aabe;--ink:#eef5fc;--cyan:#4bd7cd;--amber:#edb16c}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 "Microsoft YaHei",system-ui,sans-serif}button,a{font:inherit}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}button{cursor:pointer}header{border-bottom:1px solid var(--line);background:#0d1724}.bar{max-width:1620px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 30px}.brand{display:flex;gap:14px;align-items:center;font-weight:700;letter-spacing:.03em}.monogram{display:grid;place-items:center;border:1px solid #37767d;background:#12343d;border-radius:10px;width:43px;height:38px;color:var(--cyan)}.scope{font-size:12px;color:var(--amber);border:1px solid #6c5230;padding:4px 12px;border-radius:30px}
@@ -10,7 +10,7 @@ main{max-width:1620px;margin:auto;padding:35px 30px 48px}.intro{display:flex;ali
 .report-details{margin-top:24px}.report-details>summary{cursor:pointer;padding:16px 20px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--muted)}.report-details[open]>summary{color:var(--cyan)}
 </style></head>
 <body><header><div class="bar"><div class="brand"><span class="monogram">A2S</span> 事故场景复原与验证</div><span class="scope" id="scope">实机范围：XODR 路网与动态实体</span></div></header>
-<main><section class="intro"><div><div class="eyebrow">ACCIDENT RECONSTRUCTION / VALIDATION REPORT</div><h1><span style="display:inline-block">突破参数与画质限制，</span><wbr><span style="display:inline-block">赋能多元自动驾驶方案</span></h1><p>无需相机内外参，仅凭低分辨率多视角图像，适配搭载不同自动驾驶方案的车辆。</p></div><div class="overview"><div><strong>07</strong><span>组四视角视频</span></div><div><strong>181</strong><span>个重建目标</span></div><div><strong>1080p</strong><span>16:9 汇报输出</span></div></div></section>
+<main><section class="intro"><div><div class="eyebrow">ACCIDENT RECONSTRUCTION / VALIDATION REPORT</div><h1><span style="display:inline-block">突破参数与画质限制，</span><wbr><span style="display:inline-block">赋能跨车型自动驾驶方案</span></h1><p>无需相机内外参，仅凭低分辨率多视角图像，适配搭载不同自动驾驶方案的车辆。</p></div><div class="overview"><div><strong>07</strong><span>组四视角视频</span></div><div><strong>181</strong><span>个重建目标</span></div><div><strong>1080p</strong><span>16:9 汇报输出</span></div></div></section>
 <div class="actions" style="margin-bottom:20px"><a href="presentation/highlights.mp4" target="_blank">七组事故重点片段 · 84 秒</a></div>
 <nav id="scenes" aria-label="选择事故场景"></nav>
 <section class="stage"><div class="stagehead"><div><h2 id="title"></h2><span id="subtitle"></span></div><button class="fullscreen" id="fullscreen">全屏</button></div><video id="movie" controls preload="metadata" playsinline></video><div class="pending" id="pending" hidden><h2>本组汇报视频正在生成</h2><p>完整录制后将显示真实 CARLA 运行画面。</p></div><div class="stagefoot"><span id="capture"></span><div class="actions"><a id="downloadMovie" download>下载视频</a><a id="downloadPoster" target="_blank">汇报关键帧</a></div></div></section>
