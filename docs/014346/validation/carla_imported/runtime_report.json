@@ -23,32 +23,124 @@
   ],
   "max_ego_origin_error_m": 7.63311891205376e-06,
   "max_actor_origin_errors_m": {
-    "ego": 7.63311891205376e-06,
+    "ego": 7.64428114052862e-06,
     "oncoming_truck": 1.6731820551285637e-06,
-    "gate_truck": 7.63311891205376e-06,
-    "cargo_tricycle": 7.64428114052862e-06,
-    "parked_scooter_1": 3.948807716369629e-06,
-    "parked_scooter_2": 3.948807716369629e-06,
-    "worker_orange": 9.5367431640625e-07,
-    "delivery_scooter": 7.68876816437114e-06,
-    "worker_gray": 1.9073486328125e-06,
+    "gate_truck": 7.64428114052862e-06,
+    "cargo_tricycle": 7.68876816437114e-06,
     "silver_sedan": 7.68876816437114e-06
   },
   "max_actor_yaw_errors_deg": {
-    "ego": 2.765655517578125e-05,
+    "ego": 2.86102294921875e-05,
     "oncoming_truck": 3.0517578125e-05,
-    "gate_truck": 6.866455078125e-05,
+    "gate_truck": 7.62939453125e-05,
     "cargo_tricycle": 6.103515625e-05,
-    "parked_scooter_1": 0,
-    "parked_scooter_2": 3.0517578125e-05,
-    "worker_orange": 7.62939453125e-05,
-    "delivery_scooter": 5.53131103515625e-05,
-    "worker_gray": 0,
-    "silver_sedan": 5.340576171875e-05
+    "silver_sedan": 5.7220458984375e-05
   },
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
+  "hybrid_reconstruction": true,
+  "physical_collision_validated": false,
+  "recorded_actor_ids": [
+    "cargo_tricycle",
+    "ego",
+    "gate_truck",
+    "oncoming_truck",
+    "silver_sedan"
+  ],
+  "motion_actor_ids": [
+    "delivery_scooter",
+    "parked_scooter_1",
+    "parked_scooter_2",
+    "worker_gray",
+    "worker_orange"
+  ],
+  "motion_tracking_accepted": true,
+  "motion": {
+    "version": "motion_full_v1",
+    "control_hz": 30.0,
+    "actors": {
+      "parked_scooter_1": {
+        "kind": "two_wheeler",
+        "blueprint": "vehicle.vespa.zx125",
+        "samples": 1071,
+        "position_p95_m": 0.0003585823145310234,
+        "position_max_m": 0.0003585823145310234,
+        "moving_yaw_p95_deg": 0,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 0,
+        "foot_component_ranges_m": {}
+      },
+      "parked_scooter_2": {
+        "kind": "two_wheeler",
+        "blueprint": "vehicle.vespa.zx125",
+        "samples": 1071,
+        "position_p95_m": 0.00018692070342979296,
+        "position_max_m": 0.00018692070342979296,
+        "moving_yaw_p95_deg": 0,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 0,
+        "foot_component_ranges_m": {}
+      },
+      "worker_orange": {
+        "kind": "walker",
+        "blueprint": "walker.pedestrian.0001",
+        "samples": 941,
+        "position_p95_m": 0.05413355341706121,
+        "position_max_m": 0.2319613378522047,
+        "moving_yaw_p95_deg": 7.6543538570404035,
+        "trajectory_constraint_steps": 17,
+        "max_constraint_step_m": 0.032031536745645545,
+        "speed_assist_steps": 0,
+        "moving_samples": 359,
+        "foot_component_ranges_m": {
+          "crl_foot__R": 0.4931826336900724,
+          "crl_foot__L": 0.7853553380308255
+        }
+      },
+      "delivery_scooter": {
+        "kind": "two_wheeler",
+        "blueprint": "vehicle.vespa.zx125",
+        "samples": 381,
+        "position_p95_m": 0.20877256705817274,
+        "position_max_m": 0.24195072226346553,
+        "moving_yaw_p95_deg": 6.7220543482409205,
+        "trajectory_constraint_steps": 151,
+        "max_constraint_step_m": 0.04297501660433514,
+        "speed_assist_steps": 30,
+        "moving_samples": 327,
+        "foot_component_ranges_m": {}
+      },
+      "worker_gray": {
+        "kind": "walker",
+        "blueprint": "walker.pedestrian.0004",
+        "samples": 751,
+        "position_p95_m": 0.021660596501172698,
+        "position_max_m": 0.16014784912109548,
+        "moving_yaw_p95_deg": 4.862789177894591,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 438,
+        "foot_component_ranges_m": {
+          "crl_foot__R": 0.7904542084571182,
+          "crl_foot__L": 0.7051859085188713
+        }
+      }
+    },
+    "unsupported_models": {
+      "cargo_tricycle": "unsupported_tricycle"
+    },
+    "policy": "native locomotion with logged trajectory constraints; recorded accident timing preserved",
+    "constraint_counter_scope": "horizontal position corrections; ground/yaw stabilization and speed assistance are also enabled",
+    "tire_friction": 0.85,
+    "friction_application": "per native vehicle wheel; no overlap trigger",
+    "free_collision_dynamics_validated": false
+  },
   "road_surface_check": {
     "misses": 0,
     "max_error_m": 0.00019741058349609375

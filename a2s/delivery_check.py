@@ -5,14 +5,16 @@ import cv2
 from .common import PROJECT,IDS,read,write,sha
 
 
-def build():
+def build(ids=None):
     results=[];runtime_summary=[]
-    for sid in IDS:
+    for sid in IDS if ids is None else ids:
         root=PROJECT/'outputs'/sid;capture=root/'validation/carla_imported'
         r=read(capture/'runtime_report.json');m=read(root/'presentation/report_manifest.json')
         times=read(capture/'frame_times.json')
         with (capture/'ego_telemetry.csv').open(encoding='utf-8-sig',newline='') as f:
             telemetry=list(csv.DictReader(f))
+        recorded=set(r.get('recorded_actor_ids',r['activated_actor_ids']))
+        native=set(r.get('motion_actor_ids',[]))
         checks={
             'runtime_pass':r.get('success') and r.get('fbx_runtime_verified'),
             'full_duration':r.get('full_duration_capture') and m.get('full_duration'),
@@ -24,15 +26,22 @@ def build():
                 and abs(float(p['replay_time_s'])-t['replay_time_s'])<1e-7 for p,t in zip(telemetry,times)),
             'ego_pose':all(math.isfinite(float(p['origin_error_m'])) and float(p['origin_error_m'])<=.01 for p in telemetry),
             'all_actor_poses':r.get('command_submission')=='apply_batch_sync before tick'
-                and set(r.get('max_actor_origin_errors_m',{}))==set(r['activated_actor_ids'])
+                and set(r.get('max_actor_origin_errors_m',{}))==recorded
                 and all(error<=.01 for error in r.get('max_actor_origin_errors_m',{}).values()),
-            'all_actor_yaw':set(r.get('max_actor_yaw_errors_deg',{}))==set(r['activated_actor_ids'])
+            'all_actor_yaw':set(r.get('max_actor_yaw_errors_deg',{}))==recorded
                 and all(error<=.01 for error in r.get('max_actor_yaw_errors_deg',{}).values()) and m.get('body_yaw_verified'),
             'fresh_world':r.get('fresh_world_loaded'),
             'report_traceability':m.get('runtime_report_sha256')==sha(capture/'runtime_report.json'),
         }
+        if r.get('motion'):
+            motion=r['motion']['actors']
+            checks['motion_actor_partition']=(recorded|native)==set(r['activated_actor_ids']) and not recorded&native and set(motion)==native
+            checks['motion_tracking']=r.get('motion_tracking_accepted') and all(
+                a['position_p95_m']<=.5 and a['position_max_m']<=1 and a['moving_yaw_p95_deg']<=15 for a in motion.values())
+            checks['motion_not_free_collision_claim']=r['motion'].get('free_collision_dynamics_validated') is False
+            checks['motion_telemetry']=(capture/'motion_telemetry.csv').is_file()
         for camera in ['ego_front','ego_chase']:
-            checks[camera+'_frames']=all((capture/camera/('%06d.png'%t['index'])).is_file() for t in times)
+            checks[camera+'_frames']=all((capture/camera/('%06d.'%t['index']+r.get('image_extension','png'))).is_file() for t in times)
         video=cv2.VideoCapture(str(root/'presentation/report.mp4'))
         count=int(video.get(cv2.CAP_PROP_FRAME_COUNT));fps=video.get(cv2.CAP_PROP_FPS)
         width=int(video.get(cv2.CAP_PROP_FRAME_WIDTH));height=int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))

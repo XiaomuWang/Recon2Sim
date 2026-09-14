@@ -35,8 +35,7 @@
     "taxi_left": 1.5943762264214456e-05,
     "rear_dark": 1.52587890625e-05,
     "opposing_a": 1.52587890625e-05,
-    "opposing_b": 1.52587890625e-05,
-    "driver_gray": 5.331201577973843e-07
+    "opposing_b": 1.52587890625e-05
   },
   "max_actor_yaw_errors_deg": {
     "ego": 0,
@@ -49,12 +48,55 @@
     "taxi_left": 0,
     "rear_dark": 0,
     "opposing_a": 3.0517578125e-05,
-    "opposing_b": 3.0517578125e-05,
-    "driver_gray": 6.866455078125e-05
+    "opposing_b": 3.0517578125e-05
   },
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
+  "hybrid_reconstruction": true,
+  "physical_collision_validated": false,
+  "recorded_actor_ids": [
+    "ego",
+    "lead_silver",
+    "left_white",
+    "opposing_a",
+    "opposing_b",
+    "queue_sedan",
+    "rear_dark",
+    "right_outer",
+    "right_silver",
+    "right_suv",
+    "taxi_left"
+  ],
+  "motion_actor_ids": [
+    "driver_gray"
+  ],
+  "motion_tracking_accepted": true,
+  "motion": {
+    "version": "motion_full_v1",
+    "control_hz": 30.0,
+    "actors": {
+      "driver_gray": {
+        "kind": "walker",
+        "blueprint": "walker.pedestrian.0004",
+        "samples": 328,
+        "position_p95_m": 0.039358162744348724,
+        "position_max_m": 0.1295233767660465,
+        "moving_yaw_p95_deg": 3.701374473425507,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 162,
+        "foot_component_ranges_m": {
+          "crl_foot__R": 0.6982863461470126,
+          "crl_foot__L": 0.6975088648065094
+        }
+      }
+    },
+    "unsupported_models": {},
+    "policy": "native locomotion with logged trajectory constraints; recorded accident timing preserved",
+    "free_collision_dynamics_validated": false
+  },
   "road_surface_check": {
     "misses": 0,
     "max_error_m": 0.0

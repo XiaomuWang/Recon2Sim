@@ -47,7 +47,9 @@ def export():
                 'full_duration_capture', 'fbx_runtime_verified', 'imported_geometry_complete',
                 'imported_environment_object_count', 'missing_actor_ids', 'activated_actor_ids',
                 'max_ego_origin_error_m', 'max_actor_origin_errors_m', 'max_actor_yaw_errors_deg',
-                'command_submission', 'chase_camera', 'fresh_world_loaded']
+                'command_submission', 'chase_camera', 'fresh_world_loaded',
+                'hybrid_reconstruction', 'physical_collision_validated', 'recorded_actor_ids',
+                'motion_actor_ids', 'motion_tracking_accepted', 'motion']
         public = {key: report[key] for key in keys if key in report}
         surface = report.get('engine_surface_check', {})
         public['road_surface_check'] = {key: surface[key] for key in ['misses', 'max_error_m'] if key in surface}

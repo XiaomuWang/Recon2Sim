@@ -1,0 +1,14 @@
+{
+  "016955": {
+    "cross_scooter_b": {
+      "mode": "recorded",
+      "reason": "Estimated crossing departure intersects reconstructed sidewalk/roadside geometry after 74 s. Native physics produces heading flips and fails tracking. Preserve recorded position, heading and event timing for this accident-related actor; it is not claimed as physically validated."
+    }
+  },
+  "019742": {
+    "crossing_scooter": {
+      "mode": "recorded",
+      "reason": "Background crossing trajectory intersects reconstructed roadside/median barriers. Native physics produces heading flips and fails tracking. Preserve the recorded crossing position, heading and timing; this actor is not claimed as physically validated."
+    }
+  }
+}

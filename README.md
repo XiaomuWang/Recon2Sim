@@ -12,6 +12,22 @@
 
 ## 快速使用
 
+新版七组运动回放使用 `a2s.motion_full`：适用骑行目标启用原生车辆控制，行人启用原生步态，以 30 Hz 控制、10 fps 录制。为保留估计事故时序，必要的轨迹约束和速度辅助单独记录；三轮车、清扫车等不匹配模型及两条与静态障碍冲突的骑行轨迹保留记录位姿。主车、四视角参考和原汇报排版保持一致，俯视参考使用动态目标实际运行位置。它不是已标定的实车碰撞动力学复现。
+
+完整更新流程（需要已安装的七组场景及本地输入）：
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path runtime\motion_python).Path  # 匹配 Python 的 CARLA 0.9.15 客户端
+python -m a2s.motion_release run
+python -m a2s.motion_release promote
+python tools/export_pages.py
+python tools/check_pages.py
+```
+
+录制、排版和检查先在 `work/motion_release` 完成，`promote` 才替换正式七组，并保留旧结果。下一次更新可为两个命令指定新的 `--stage work/motion_release_新版本`。原有 `a2s.replay` 仍提供记录位姿基线回放。实现、约束和试验结果见 [运动优化说明](a2s/MOTION_OPTIMIZATION.md)。
+
+只修改新版排版时，编辑 `a2s/motion_movie.py`，执行 `python -m a2s.motion_movie --scene all --published`，然后执行 `python -m a2s.motion_release refresh` 更新原七组合辑和网页。该流程复用已录制的运动优化帧，不需要再连接 CARLA。
+
 在本目录执行（本机已有 Python 3.8、CARLA 0.9.15 客户端及相关依赖；Blender/FFmpeg 自动查找整理后的输入目录中的运行时）：
 
 ```powershell

@@ -32,6 +32,8 @@ function select(id){const s=scenes.find(x=>x.id===id);current=s;history.replaceS
  el('ego').textContent=s.ego;el('related').replaceChildren();s.related.forEach(id=>{const p=document.createElement('span');p.className='pill';p.textContent=id;el('related').append(p)});
  for(const [key,path] of [['downloadMovie','presentation/report.mp4'],['downloadPoster','presentation/report_poster.png'],['chartLink','analysis/ego_analysis.png'],['runtime',`validation/carla_${s.mode}/runtime_report.json`],['analysis','analysis/ego_metrics.csv'],['telemetry',`validation/carla_${s.mode}/ego_telemetry.csv`],['mapping','entity_mapping.json']])el(key).href=`${id}/${path}${path.startsWith('presentation/')?'?v='+s.media_version:''}`;
  el('analysis').href=`csv_viewer.html?scene=${id}&type=analysis`;el('telemetry').href=`csv_viewer.html?scene=${id}&type=telemetry`;
+ el('evidenceScope').nextElementSibling.textContent=s.movie?.motion_version?'运动优化版：适用骑行目标采用原生车辆控制，行人启用原生步态；为保留事故时序而施加的轨迹约束与速度辅助在实机记录中说明。三轮车、清扫车等替代模型及两条与静态障碍冲突的骑行轨迹保留记录位姿，未验证真实碰撞动力学。四视角参考仍存在估计同步偏移和缺帧。':'四个原视频参考窗按已有时间估计对齐，存在跨视角偏移和缺帧。动力学为轨迹驱动的姿态回放。';
+ if(s.movie?.motion_version)el('subtitle').textContent+=' · 动态目标运动优化版';
  el('chart').src=`${id}/analysis/ego_analysis.png`;el('downloadMovie').hidden=!s.ready;el('downloadPoster').hidden=!s.ready;
 }
 scenes.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.dataset.id=s.id;b.textContent=`${String(i+1).padStart(2,'0')} / ${s.id}`;const brand=document.createElement('span');brand.className='brand-label';brand.textContent=s.brand;const small=document.createElement('small');small.textContent=s.title;b.append(brand,small);b.onclick=()=>select(s.id);el('scenes').append(b)});

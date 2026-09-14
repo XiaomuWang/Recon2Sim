@@ -60,20 +60,17 @@
     "traffic_14": 1.52587890625e-05,
     "lead_white_car": 7.91242655395763e-06,
     "lead_yellow": 1.7059845049516298e-05,
-    "cross_scooter_a": 3.9637088775634766e-06,
     "cross_scooter_b": 3.9637088775634766e-06,
     "container_truck": 1.922192041092785e-06,
     "oncoming_boxtruck": 1.52587890625e-05,
     "oncoming_dark_suv": 1.52587890625e-05,
     "sweeper": 4.5746564865112305e-06,
-    "ped_exit_a": 3.814697265625e-06,
-    "ped_exit_b": 3.84438408218557e-06,
     "exit_white_van": 1.52587890625e-05,
     "exit_sedan_a": 1.52587890625e-05,
-    "exit_sedan_b": 2.0973384380340576e-06
+    "exit_sedan_b": 1.52587890625e-05
   },
   "max_actor_yaw_errors_deg": {
-    "ego": 6.4849853515625e-05,
+    "ego": 0.00011444091796875,
     "coach": 7.62939453125e-06,
     "traffic_01": 7.62939453125e-06,
     "traffic_02": 7.62939453125e-06,
@@ -91,14 +88,11 @@
     "traffic_14": 7.62939453125e-06,
     "lead_white_car": 7.62939453125e-06,
     "lead_yellow": 7.62939453125e-06,
-    "cross_scooter_a": 7.62939453125e-06,
     "cross_scooter_b": 1.52587890625e-05,
     "container_truck": 3.0517578125e-05,
     "oncoming_boxtruck": 3.0517578125e-05,
     "oncoming_dark_suv": 3.0517578125e-05,
     "sweeper": 5.340576171875e-05,
-    "ped_exit_a": 7.62939453125e-06,
-    "ped_exit_b": 7.62939453125e-06,
     "exit_white_van": 7.62939453125e-06,
     "exit_sedan_a": 7.62939453125e-06,
     "exit_sedan_b": 7.62939453125e-06
@@ -106,6 +100,109 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
+  "hybrid_reconstruction": true,
+  "physical_collision_validated": false,
+  "recorded_actor_ids": [
+    "coach",
+    "container_truck",
+    "cross_scooter_b",
+    "ego",
+    "exit_sedan_a",
+    "exit_sedan_b",
+    "exit_white_van",
+    "lead_white_car",
+    "lead_yellow",
+    "oncoming_boxtruck",
+    "oncoming_dark_suv",
+    "sweeper",
+    "traffic_01",
+    "traffic_02",
+    "traffic_03",
+    "traffic_04",
+    "traffic_05",
+    "traffic_06",
+    "traffic_07",
+    "traffic_08",
+    "traffic_09",
+    "traffic_10",
+    "traffic_11",
+    "traffic_12",
+    "traffic_13",
+    "traffic_14"
+  ],
+  "motion_actor_ids": [
+    "cross_scooter_a",
+    "ped_exit_a",
+    "ped_exit_b"
+  ],
+  "motion_tracking_accepted": true,
+  "motion": {
+    "version": "motion_full_v1",
+    "control_hz": 30.0,
+    "actors": {
+      "cross_scooter_a": {
+        "kind": "two_wheeler",
+        "blueprint": "vehicle.vespa.zx125",
+        "samples": 191,
+        "position_p95_m": 0.20727047338867166,
+        "position_max_m": 0.32148797152727,
+        "moving_yaw_p95_deg": 2.2918930053710938,
+        "trajectory_constraint_steps": 48,
+        "max_constraint_step_m": 0.14337138087759704,
+        "speed_assist_steps": 14,
+        "moving_samples": 191,
+        "foot_component_ranges_m": {}
+      },
+      "ped_exit_a": {
+        "kind": "walker",
+        "blueprint": "walker.pedestrian.0001",
+        "samples": 351,
+        "position_p95_m": 0.0021036979980451065,
+        "position_max_m": 0.01755985131836013,
+        "moving_yaw_p95_deg": 7.62939453125e-06,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 254,
+        "foot_component_ranges_m": {
+          "crl_foot__R": 0.3393947285707187,
+          "crl_foot__L": 0.31231555002180617
+        }
+      },
+      "ped_exit_b": {
+        "kind": "walker",
+        "blueprint": "walker.pedestrian.0004",
+        "samples": 351,
+        "position_p95_m": 0.00917753650348525,
+        "position_max_m": 0.040468195966601894,
+        "moving_yaw_p95_deg": 7.26140136718749,
+        "trajectory_constraint_steps": 0,
+        "max_constraint_step_m": 0.0,
+        "speed_assist_steps": 0,
+        "moving_samples": 209,
+        "foot_component_ranges_m": {
+          "crl_foot__R": 0.1942525630648755,
+          "crl_foot__L": 0.16551983584957003
+        }
+      }
+    },
+    "unsupported_models": {
+      "cross_scooter_b": "unsupported_static_conflict",
+      "sweeper": "unsupported_sweeper"
+    },
+    "policy": "native locomotion with logged trajectory constraints; recorded accident timing preserved",
+    "constraint_counter_scope": "horizontal position corrections; ground/yaw stabilization and speed assistance are also enabled",
+    "tire_friction": 0.85,
+    "friction_application": "per native vehicle wheel; no overlap trigger",
+    "speed_assistance": "bounded reference-speed integrator above 10 m/s; native-speed correction below",
+    "recorded_exceptions": {
+      "cross_scooter_b": {
+        "mode": "recorded",
+        "reason": "Estimated crossing departure intersects reconstructed sidewalk/roadside geometry after 74 s. Native physics produces heading flips and fails tracking. Preserve recorded position, heading and event timing for this accident-related actor; it is not claimed as physically validated."
+      }
+    },
+    "free_collision_dynamics_validated": false
+  },
   "road_surface_check": {
     "misses": 0,
     "max_error_m": 3.0517577442878974e-07

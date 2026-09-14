@@ -32,6 +32,8 @@ python tools/check_pages.py
 
 Commit the changed `docs/` files. The exporter preserves the requested scene order, removes installation-package/legacy-offline links, and publishes verification summaries without local machine paths. It requires completed local reconstruction outputs, while deployment only needs the already exported `docs/` directory.
 
+For the motion-updated original seven, use `python -m a2s.motion_release run` and then `promote` after successful verification. These commands stage the captures, preserve previous reports, rebuild the seven-case highlights and regenerate the page. Configure the matching CARLA 0.9.15 client as described in README.md. A later release must use a new `--stage work/motion_release_<version>` for both commands. The published runtime summaries disclose native locomotion, reconstruction constraints and recorded-pose exceptions. After deployment, `python tools/check_motion_pages.py` checks the deployed page, seven summaries and byte-range video responses against the exported files.
+
 Video assets are tracked directly for this initial publication; each is below GitHub's 100 MiB file limit, and the full site is below the Pages size limit. Frequent video replacements enlarge Git history, so future large or frequent datasets can be moved to separate artifact hosting. Git LFS is not required for this publication.
 
 The complete reconstruction pipeline additionally requires the externally supplied source data and tools documented in README.md; cloning this repository alone does not reproduce unshipped datasets or install CARLA/Unreal.
