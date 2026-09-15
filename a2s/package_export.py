@@ -32,7 +32,7 @@ def build():
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=3,allowZip64=True) as z:
         for path,digest in entries.items():
             if path.suffix=='.xodr':relative='Maps/'+path.stem+'/OpenDrive/'+path.name
-            else:relative=relative_paths[path]
+            else:relative=Path(relative_paths[path]).as_posix()
             member='CarlaUE4/Content/'+PACKAGE+'/'+relative
             z.write(path,member);manifest.append(dict(path=member,sha256=digest,bytes=path.stat().st_size))
         z.writestr('IMPORT_README.txt','CARLA 0.9.15 Windows map resources\nExtract into WindowsNoEditor (next to CarlaUE4.exe).\n'
