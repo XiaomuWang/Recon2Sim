@@ -80,8 +80,28 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "yellow_bus": 0,
+    "parked_van_1": 0,
+    "parked_red_1": 0,
+    "parked_gray_1": 0,
+    "parked_white_1": 0,
+    "parked_van_2": 0,
+    "parked_red_2": 0,
+    "early_white_suv": 0,
+    "roadside_gray_sedan": 0,
+    "dark_overtaking_car": 0,
+    "black_delivery_truck": 0,
+    "truckside_sedan": 0,
+    "white_left_sedan": 0,
+    "white_following_car": 0,
+    "silver_suv_late": 0,
+    "gray_sedan_late": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "black_delivery_truck",
     "dark_overtaking_car",
@@ -266,6 +286,10 @@
     "speed_assistance": "bounded reference-speed integrator above 10 m/s; native-speed correction below",
     "recorded_exceptions": {},
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Reviewed four-view event/identity anchors + masked static optical flow for ego timing + PCHIP interpolation. NOT calibrated multi-camera 3D tracking."
   },
   "road_surface_check": {
     "misses": 0,

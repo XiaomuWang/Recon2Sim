@@ -156,7 +156,8 @@ def build_many(ids):
         write(PROJECT/'outputs'/sid/'validation/unreal_native_import.json',dict(scene_id=sid,map_name=m['name'],
             editor_version='UE 4.26.2 / CARLA editor 0.9.12',target_runtime='CARLA 0.9.15 Windows',
             source_fbx_sha256=sha(PROJECT/'outputs'/sid/'map'/(m['name']+'.fbx')),map_created=True,runtime_verified=False))
-    cook('batch',maps[0]['name'])
+    for sid,m in zip(ids,maps):
+        cook(sid,m['name'])
 
 
 def install(sid,target=TARGET):

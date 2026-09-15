@@ -51,7 +51,7 @@ def validate(sid):
               max_speed_m_s=max(r['speed'] for r in rows), stationary=e['stationary']))
     video={}
     for v in VIEWS:
-        path=WORKSPACE/scene['video_dir']/(v+'.mp4'); cap=cv2.VideoCapture(str(path))
+        path=WORKSPACE/scene['source_recording'] if scene.get('source_recording') else WORKSPACE/scene['video_dir']/scene.get('video_files',{}).get(v,v+'.mp4'); cap=cv2.VideoCapture(str(path))
         fps=cap.get(cv2.CAP_PROP_FPS); frames=int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         duration=frames/fps if fps else 0
         start=scene['source_video_start_s']+scene['camera_file_time_offsets_s'][v]

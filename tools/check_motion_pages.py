@@ -26,7 +26,9 @@ def check(base):
                 else:
                     valid=response.status==200 and hashlib.sha256(body).hexdigest()==entry['sha256']
                     if path.endswith('runtime_report.json'):
-                        data=json.loads(body);valid=valid and data.get('motion_tracking_accepted') and data.get('motion',{}).get('version')=='motion_full_v1'
+                        data=json.loads(body)
+                        if 'motion' in data: valid=valid and data.get('motion_tracking_accepted') and data['motion'].get('version')=='motion_full_v1'
+                        else: valid=valid and data.get('success') and data.get('fbx_runtime_verified') and data.get('kinematic') and data.get('physical_collision_validated') is False
                 result=dict(path=path,passed=bool(valid),status=response.status)
         except Exception as error:result=dict(path=path,passed=False,error=str(error))
         print(json.dumps(result),flush=True);return result

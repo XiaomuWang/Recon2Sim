@@ -23,15 +23,17 @@ def build():
     template=(PROJECT/'templates/report.html').read_text(encoding='utf-8')
     downloads=[]
     highlight_manifest=out/'presentation/highlights_manifest.json'
-    highlight_name=read(highlight_manifest).get('video_file','highlights.mp4') if highlight_manifest.exists() else 'highlights.mp4'
-    for path,label in [('presentation/'+highlight_name,'七组事故重点片段 · 84 秒'),
+    highlight_data=read(highlight_manifest) if highlight_manifest.exists() else {}
+    highlight_name=highlight_data.get('video_file','highlights.mp4')
+    for path,label in [('presentation/'+highlight_name,str(len(scenes))+' 组事故重点片段 · '+str(round(highlight_data.get('duration_s',0)))+' 秒'),
                        ('carla_package/Accident2SimScenes_CARLA_0.9.15_Windows.zip','下载 CARLA 场景导入包')]:
         if (out/path).is_file():downloads.append('<a href="'+path+'?v='+str((out/path).stat().st_mtime_ns)+'_range1" '+('target="_blank"' if path.endswith('.mp4') else 'download')+'>'+label+'</a>')
+    template=template.replace('__CASE_COUNT__',str(len(scenes)).zfill(2)).replace('__ACTOR_COUNT__',str(sum(s['actors'] for s in scenes)))
     template=template.replace('__GLOBAL_DOWNLOADS__',' · '.join(downloads))
     if not (out/'offline.html').exists():shutil.copy2(out/'index.html',out/'offline.html')
     (out/'index.html').write_text(template.replace('__SCENE_DATA__',json.dumps(scenes,ensure_ascii=False).replace('</','<\/')),encoding='utf-8')
     viewer=(PROJECT/'templates/csv_viewer.html').read_text(encoding='utf-8')
-    (out/'csv_viewer.html').write_text(viewer.replace('__SCENE_NAMES__',json.dumps(NAMES,ensure_ascii=False)),encoding='utf-8')
+    (out/'csv_viewer.html').write_text(viewer.replace('__SCENE_NAMES__',json.dumps({sid:NAMES[sid] for sid in REPORT_IDS},ensure_ascii=False)),encoding='utf-8')
     print('REPORT_PAGE_UPDATED',sum(s['ready'] for s in scenes),flush=True)
 
 if __name__=='__main__':build()

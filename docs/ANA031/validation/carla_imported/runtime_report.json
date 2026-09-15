@@ -53,8 +53,22 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "lead_silver": 0,
+    "queue_sedan": 0,
+    "left_white": 0,
+    "right_suv": 0,
+    "right_outer": 0,
+    "right_silver": 0,
+    "taxi_left": 0,
+    "rear_dark": 0,
+    "opposing_a": 0,
+    "opposing_b": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "ego",
     "lead_silver",
@@ -96,6 +110,10 @@
     "unsupported_models": {},
     "policy": "native locomotion with logged trajectory constraints; recorded accident timing preserved",
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Manual multi-view event/identity anchors + masked static-flow timing + PCHIP. Not calibrated 3D tracking. Side fisheye pixels never treated as a metric plane."
   },
   "road_surface_check": {
     "misses": 0,

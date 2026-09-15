@@ -18,6 +18,13 @@ from .common import PROJECT, read, write, tracks, interpolate, sha, wrap
 
 def ground_transform(actor, pose):
     """Convert measured bbox ground-center into the blueprint's actor origin."""
+    if pose.get('roll_carla_deg') or pose.get('pitch_carla_deg'):
+        rotation=carla.Rotation(yaw=pose['yaw_carla_deg'],roll=pose.get('roll_carla_deg',0),pitch=pose.get('pitch_carla_deg',0))
+        frame=carla.Transform(carla.Location(),rotation);bb=actor.bounding_box
+        center=frame.transform(carla.Location(x=bb.location.x,y=bb.location.y,z=bb.location.z))
+        corners=[frame.transform(carla.Location(x=x*bb.extent.x,y=y*bb.extent.y,z=z*bb.extent.z)) for x in [-1,1] for y in [-1,1] for z in [-1,1]]
+        height=-min(p.z for p in corners)
+        return carla.Transform(carla.Location(x=pose['x']-center.x,y=pose['y']-center.y,z=pose['z']-center.z+height+.02),rotation)
     bb=actor.bounding_box; angle=math.radians(pose['yaw_carla_deg'])
     bx,by=bb.location.x,bb.location.y
     return carla.Transform(carla.Location(x=pose['x']-bx*math.cos(angle)+by*math.sin(angle),
@@ -37,7 +44,9 @@ def replay(sid,mode='xodr',host='localhost',port=2000,duration=None,fps=10,start
     out=PROJECT/'outputs'/sid; cfg=read(out/'scene_config.json'); mapping=read(out/'entity_mapping.json')
     data=tracks(out/'trajectories.csv'); xodr=out/'map'/(cfg['map_name']+'.xodr')
     capture=out/'validation'/('carla_'+mode); capture.mkdir(parents=True,exist_ok=True)
-    report=dict(scene_id=sid,mode=mode,success=False,carla_runtime_verified=False,fbx_runtime_verified=False,
+    image_ext=cfg.get('capture_image_format','png')
+    if image_ext not in ['png','jpg']:raise ValueError('Unsupported capture format')
+    report=dict(image_extension=image_ext,scene_id=sid,mode=mode,success=False,carla_runtime_verified=False,fbx_runtime_verified=False,
                 physical_collision_validated=False,camera_model='approximate uncalibrated rectilinear',frames=0,spawn_failures=[],blueprints={},
                 xodr_sha256=sha(xodr),kinematic=True)
     client=carla.Client(host,port); client.set_timeout(180)
@@ -130,7 +139,7 @@ def replay(sid,mode='xodr',host='localhost',port=2000,duration=None,fps=10,start
         friction=world.spawn_actor(fb,carla.Transform(carla.Location(z=0)))
         if start<0 or start>=cfg['duration_s']:raise ValueError('Start time outside scenario')
         end=min(cfg['duration_s'],start+duration) if duration is not None else cfg['duration_s']
-        camera_queues={}; camera_counts={}; timestamp_rows=[]; telemetry=[]; max_pose_error=0;activated=set();actor_errors={};yaw_errors={}
+        camera_queues={}; camera_counts={}; timestamp_rows=[]; telemetry=[]; max_pose_error=0;activated=set();actor_errors={};yaw_errors={};roll_errors={}
         chase_sensor=None;chase_heading=None;spectator=world.get_spectator()
         for step in range(int(math.floor((end-start)*fps))+1):
             t=start+step/fps
@@ -190,6 +199,9 @@ def replay(sid,mode='xodr',host='localhost',port=2000,duration=None,fps=10,start
                 actor_errors[aid]=max(actor_errors.get(aid,0),error)
                 yaw_error=abs(wrap(observed.get_transform().rotation.yaw-transform.rotation.yaw))
                 yaw_errors[aid]=max(yaw_errors.get(aid,0),yaw_error)
+                roll_error=abs(wrap(observed.get_transform().rotation.roll-transform.rotation.roll))
+                roll_errors[aid]=max(roll_errors.get(aid,0),roll_error)
+                if roll_error>.01:raise RuntimeError('Frame-synchronous actor roll error exceeds 0.01 degree: '+aid)
                 if yaw_error>.01:
                     report['yaw_mismatch']=dict(actor_id=aid,time_s=t,frame=frame,error_deg=yaw_error)
                     raise RuntimeError('Frame-synchronous actor yaw error exceeds 0.01 degree: '+aid)
@@ -212,12 +224,13 @@ def replay(sid,mode='xodr',host='localhost',port=2000,duration=None,fps=10,start
             for name,q in camera_queues.items():
                 im=receive_frame(q,frame)
                 pixels=np.frombuffer(im.raw_data,dtype=np.uint8).reshape(im.height,im.width,4)[:,:,:3]
-                destination=capture/name/('%06d.png'%step)
-                if not cv2.imwrite(str(destination),pixels,[cv2.IMWRITE_PNG_COMPRESSION,1]):
+                destination=capture/name/('%06d.'%step+image_ext)
+                encode_options=[cv2.IMWRITE_JPEG_QUALITY,cfg.get('capture_jpeg_quality',93)] if image_ext=='jpg' else [cv2.IMWRITE_PNG_COMPRESSION,1]
+                if not cv2.imwrite(str(destination),pixels,encode_options):
                     raise RuntimeError('Failed to save CARLA camera frame')
                 if step==0:
                     reference_image=capture/(name+'_native_encoding_reference.png');im.save_to_disk(str(reference_image))
-                    if not np.array_equal(cv2.imread(str(reference_image)),cv2.imread(str(destination))):
+                    if image_ext=='png' and not np.array_equal(cv2.imread(str(reference_image)),cv2.imread(str(destination))):
                         raise RuntimeError('Fast PNG encoding changed the camera RGB pixels')
                 camera_counts[name]+=1
             timestamp_rows.append(dict(index=step,carla_frame=frame,replay_time_s=t,source_video_time_s=t+cfg['source_video_start_s']))
@@ -225,8 +238,8 @@ def replay(sid,mode='xodr',host='localhost',port=2000,duration=None,fps=10,start
             if step%100==0:print('CAPTURE',sid,'t=',round(t,1),'actors=',len(owned),'frame=',frame,flush=True)
         report.update(success=True,carla_runtime_verified=True,fbx_runtime_verified=(mode=='imported'),
                       command_submission='apply_batch_sync before tick',max_actor_origin_errors_m=actor_errors,
-                      max_actor_yaw_errors_deg=yaw_errors,chase_camera='independent world camera; heading smoothing time constant 1 s',
-                      encoding='lossless PNG compression 1; RGB equality checked against CARLA native encoder',
+                      max_actor_yaw_errors_deg=yaw_errors,max_actor_roll_errors_deg=roll_errors,chase_camera='independent world camera; heading smoothing time constant 1 s',
+                      encoding=('JPEG quality '+str(cfg.get('capture_jpeg_quality',93))+'; native first-frame PNG retained' if image_ext=='jpg' else 'lossless PNG compression 1; RGB equality checked against CARLA native encoder'),
                       max_ego_origin_error_m=max_pose_error,camera_counts=camera_counts,capture_start_s=start,capture_duration_s=end-start,
                       activated_actor_ids=sorted(activated),full_duration_capture=start==0 and abs(end-cfg['duration_s'])<1/fps)
         expected={e['actor_id'] for e in mapping['actors'] if e['end_time_s']>=start and e['start_time_s']<=end}

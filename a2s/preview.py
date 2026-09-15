@@ -34,15 +34,15 @@ def plan_base(out,size=(480,270)):
     return base,point,scale
 
 
-def preview(sid,fps=4):
+def preview(sid,fps=4,update_index=True):
     out=PROJECT/'outputs'/sid; cfg=read(out/'scene_config.json');entities=read(out/'entity_mapping.json');data=tracks(out/'trajectories.csv')
     folder=out/'preview';folder.mkdir(exist_ok=True)
     base,point,scale=plan_base(out); meta=read(out/'validation/video_metadata.json')
-    caps={v:cv2.VideoCapture(str(WORKSPACE/cfg['video_dir']/(v+'.mp4'))) for v in VIEWS}
+    caps={v:cv2.VideoCapture(str(WORKSPACE/cfg['video_dir']/cfg.get('video_files',{}).get(v,v+'.mp4'))) for v in VIEWS}
     render_manifest=out/'validation/fbx/renders.json'
     renders=read(render_manifest) if render_manifest.exists() else []
     fbx_frames={r['file']:Image.open(out/'validation/fbx'/r['file']).convert('RGB') for r in renders}
-    critical={'014346':17,'019742':110,'016955':114,'024388':64,'0512189':85,'0508656':82,'ANA031':26.8}[sid]
+    critical={'014346':17,'019742':110,'016955':114,'024388':64,'0512189':85,'0508656':82,'ANA031':26.8}.get(sid,cfg.get('critical_time_s',cfg['duration_s']/2))
     exe=os.environ.get('FFMPEG_EXE') or shutil.which('ffmpeg')
     if not exe: exe=str(next((WORKSPACE/'dynamic_data').glob('*/runtime/ffmpeg.exe')))
     destination=folder/'six_panel_comparison.mp4';W,H=1440,660
@@ -98,7 +98,7 @@ def preview(sid,fps=4):
     write(folder/'preview_metadata.json',dict(duration_s=cfg['duration_s'],fps=fps,views=VIEWS,video='six_panel_comparison.mp4',
         panel6='nearest offline FBX keyframe; timestamp explicitly labelled',carla_footage=False))
     print('PREVIEW_COMPLETE',sid,flush=True)
-    index()
+    if update_index: index()
 
 
 def index():

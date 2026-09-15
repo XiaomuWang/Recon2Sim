@@ -156,5 +156,39 @@
     "road_margin_m": 0.5,
     "carla_host": "localhost",
     "carla_port": 2000
+  },
+  {
+    "scene_id": "157116",
+    "name": "PonyFourView157116",
+    "title": "直路行驶中两轮车交互与停车",
+    "video_dir": "data/小马_LNBMC1TK5SZ157116_直路两轮车交互",
+    "ego_actor_id": "ego",
+    "accident_actor_ids": [
+      "yellow_scooter",
+      "rider_gray",
+      "person_blue"
+    ],
+    "camera_file_time_offsets_s": {
+      "front": 0,
+      "rear": 0,
+      "left": 0,
+      "right": 0
+    },
+    "camera_sync_status": "Equal 200-frame files at 9.1 fps; simultaneous scene events visually consistent; hardware synchronization unknown",
+    "road_margin_m": 0.5,
+    "carla_host": "127.0.0.1",
+    "carla_port": 2000,
+    "source_video_start_s": 0.9,
+    "source_video_end_s": 21.8,
+    "camera_model": "fisheye",
+    "camera_calibration_status": "not supplied; rectilinear CARLA view is a presentation camera, not a calibrated recreation of source lens",
+    "static_revision": "detailed_v2",
+    "video_files": {
+      "front": "前.mp4",
+      "rear": "后.mp4",
+      "left": "左.mp4",
+      "right": "右.mp4"
+    },
+    "vehicle_brand": "小马"
   }
 ]

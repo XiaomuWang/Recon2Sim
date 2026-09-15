@@ -9,7 +9,7 @@
 <div class="table-wrap"><table><thead id="head"></thead><tbody id="body"></tbody></table><div id="empty" hidden>没有匹配的记录</div></div>
 <div class="pager"><button id="prev" disabled>上一页</button><span id="page">—</span><button id="next" disabled>下一页</button></div></main>
 <script>
-const names={"024388": "路口右转与行人穿越", "0512189": "拥堵路段变道", "0508656": "变道后急刹", "ANA031": "雨夜减速与停驶", "014346": "货车横向驶出", "019742": "避让逆行骑行者急刹", "016955": "路口右转与清扫车交互"};
+const names={"157116": "直路行驶中两轮车交互与停车", "024388": "路口右转与行人穿越", "0512189": "拥堵路段变道", "0508656": "变道后急刹", "ANA031": "雨夜减速与停驶", "014346": "货车横向驶出", "019742": "避让逆行骑行者急刹", "016955": "路口右转与清扫车交互"};
 const fields={t:'回放时间 / s',speed_kmh:'速度 / km/h',acceleration_m_s2:'纵向加速度 / m/s²',distance_m:'累计路程 / m',related_center_distance_m:'事故目标中心距离 / m',x:'X / m',y:'Y / m',replay_time_s:'回放时间 / s',carla_frame:'CARLA 帧号',snapshot_frame:'快照帧号',ground_x:'地面中心 X / m',ground_y:'地面中心 Y / m',ground_z:'地面中心 Z / m',yaw_carla_deg:'实际偏航角 / °',commanded_yaw_deg:'指令偏航角 / °',yaw_rate_deg_s:'偏航角速度 / °/s',chase_camera_yaw_deg:'跟随相机偏航角 / °',commanded_speed_m_s:'指令速度 / m/s',position_derived_speed_m_s:'位移推导速度 / m/s',origin_error_m:'执行位置误差 / m'};
 const el=id=>document.getElementById(id);let rows=[],filtered=[],page=0;const pageSize=100;
 function parseCsv(text){const result=[];let row=[],cell='',quoted=false;text=text.replace(/^\uFEFF/,'');for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){row.push(cell);cell='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cell);if(row.some(x=>x!==''))result.push(row);row=[];cell='';}else cell+=c;}if(cell||row.length){row.push(cell);result.push(row);}return result;}

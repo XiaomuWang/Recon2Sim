@@ -100,8 +100,37 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "coach": 0,
+    "traffic_01": 0,
+    "traffic_02": 0,
+    "traffic_03": 0,
+    "traffic_04": 0,
+    "traffic_05": 0,
+    "traffic_06": 0,
+    "traffic_07": 0,
+    "traffic_08": 0,
+    "traffic_09": 0,
+    "traffic_10": 0,
+    "traffic_11": 0,
+    "traffic_12": 0,
+    "traffic_13": 0,
+    "traffic_14": 0,
+    "lead_white_car": 0,
+    "lead_yellow": 0,
+    "cross_scooter_b": 0,
+    "container_truck": 0,
+    "oncoming_boxtruck": 0,
+    "oncoming_dark_suv": 0,
+    "sweeper": 0,
+    "exit_white_van": 0,
+    "exit_sedan_a": 0,
+    "exit_sedan_b": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "coach",
     "container_truck",
@@ -202,6 +231,10 @@
       }
     },
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Four-view manually reviewed motion and identity anchors; static XODR route; bounded masked optical-flow correction to ego timing; PCHIP interpolation. Not calibrated multi-camera 3D tracking."
   },
   "road_surface_check": {
     "misses": 0,

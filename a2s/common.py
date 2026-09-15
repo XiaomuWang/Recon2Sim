@@ -6,7 +6,7 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
 WORKSPACE = PROJECT.parent
-IDS = ['014346', '019742', '016955', '024388', '0512189', '0508656', 'ANA031']
+IDS = ['014346', '019742', '016955', '024388', '0512189', '0508656', 'ANA031', '157116']
 VIEWS = ['front', 'rear', 'left', 'right']
 
 
@@ -47,6 +47,8 @@ def interpolate(rows, t):
     for k in ['x', 'y', 'z', 'speed']:
         out[k] = a[k] + u * (b[k]-a[k])
     out['yaw_carla_deg'] = wrap(a['yaw_carla_deg'] + u * wrap(b['yaw_carla_deg']-a['yaw_carla_deg']))
+    for k in ['roll_carla_deg', 'pitch_carla_deg']:
+        if k in a or k in b: out[k] = a.get(k, 0) + u * wrap(b.get(k, 0) - a.get(k, 0))
     return out
 
 

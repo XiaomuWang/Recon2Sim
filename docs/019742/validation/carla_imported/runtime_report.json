@@ -101,8 +101,36 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "early_black_sedan": 0,
+    "early_right_whitevan": 0,
+    "opposing_early_sedan": 0,
+    "early_white_follower": 0,
+    "early_blue_truck": 0,
+    "early_ad_van": 0,
+    "micro_delivery": 0,
+    "dark_suv_overtake": 0,
+    "blue_white_robotaxi": 0,
+    "crossing_scooter": 0,
+    "crossing_sedan": 0,
+    "canopy_tricycle": 0,
+    "junction_white_boxvan": 0,
+    "silver_minivan": 0,
+    "parked_access_boxtruck": 0,
+    "blue_sedan_rear": 0,
+    "parked_gray_suv": 0,
+    "parked_lead_white_van": 0,
+    "access_cargo_trike": 0,
+    "parked_lead_compact": 0,
+    "opposing_bluewhite_car": 0,
+    "opposing_blue_flatbed": 0,
+    "opposing_dark_suv": 0,
+    "late_rider_canopy": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "access_cargo_trike",
     "blue_sedan_rear",
@@ -254,6 +282,10 @@
       }
     },
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Manual four-view identity/event anchors, masked static-region optical-flow ego timing blended with map landmark constraints, PCHIP interpolation. Not calibrated multiview 3D tracking."
   },
   "road_surface_check": {
     "misses": 0,

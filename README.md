@@ -1,12 +1,12 @@
 # Recon2Sim
 
-七组事故场景的重建代码与静态汇报主页。GitHub 仓库包含源码、研究脚本、配置、测试及 `docs/` 展示文件；不包含原始数据、CARLA 场景安装包、逐帧采集、Unreal 工程或预装运行时。完整复现仍需下文说明的外部数据与工具。
+八组事故场景的重建代码与静态汇报主页。GitHub 仓库包含源码、研究脚本、配置、测试及 `docs/` 展示文件；不包含原始数据、CARLA 场景安装包、逐帧采集、Unreal 工程或预装运行时。完整复现仍需下文说明的外部数据与工具。
 
 只查看汇报时，无需安装 CARLA：运行 `python -m a2s.report_server --bind 127.0.0.1 --port 8000 --directory docs`，打开 `http://127.0.0.1:8000/`。GitHub Pages 部署与更新方法见 [PUBLISHING.md](PUBLISHING.md)。
 
 项目目录和名称已统一为 `Recon2Sim`。Python 模块入口继续使用 `a2s`；已安装的 CARLA 资源命名空间 `Accident2SimScenes` 和对应资源包文件名保留兼容。历史运行报告中的原始绝对路径保留为执行时记录。
 
-七组事故视频的静态与动态复现代码。输入使用上一级的 `data`、`static_data`、`dynamic_data`，研发代码、隔离构建目录和新结果均在本项目中。原始输入不修改。
+八组事故视频的静态与动态复现代码。输入使用上一级的 `data`、`static_data`、`dynamic_data`，研发代码、隔离构建目录和新结果均在本项目中。原始输入不修改。
 
 本项目已经重新执行七组静态建模、OpenDRIVE 导出及动态生成脚本。使用原始研究中人工复核的身份、事件、尺度与空间锚点，以及静态区域光流约束和 PCHIP 插值；**不是从未标定四路视频自动获得精确三维真值**。`recipes` 保存可编辑的原始研究算法，`a2s` 提供统一构建、坐标、实体映射、道路绑定、检查和回放实现。
 
@@ -176,3 +176,10 @@ python -m a2s.delivery
 - 天气、能见度、摩擦和尺寸为明确标注的估计。CARLA `fog_distance` 是雾开始距离，另外输出的能见距离不是该字段的别名。
 - 路网以外的目标具有 FBX 表面覆盖；014346 与 019742 中仍有少量估计包围盒与结构的射线相交，需复核模型尺寸、位置和可通行空间。该筛查不是完整碰撞检测。
 - 离线 FBX 中的黄色/红色/蓝色模型是尺寸代理，不是 CARLA 原生实体。离线截图、原有 validation 文件以及单独的 XODR 运行都不能替代完整 XODR+FBX 的 CARLA 实机验收。
+
+
+## Eighth case: 157116
+
+The public catalog now contains eight cases, with Pony 157116 first. Its approved 21-second 1080p video uses the detailed static v2 reconstruction and recorded CARLA poses. The original seven retain their published motion-updated videos. The eight-case highlights run for 96 seconds.
+
+Local raw inputs for 157116 are under `data/` in the folder named by `configs/157116.json`; `video_files` maps front/rear/left/right to the original Chinese filenames. All four cameras are fisheye. Calibration was not supplied, so metric layout and trajectories remain visual estimates; the CARLA presentation camera is not a calibrated lens recreation. Raw videos and engine packages remain outside Git.

@@ -1,4 +1,4 @@
-"""Join seven traceable accident excerpts into one presentation video."""
+"""Join published traceable accident excerpts into one presentation video."""
 import subprocess
 import time
 import cv2

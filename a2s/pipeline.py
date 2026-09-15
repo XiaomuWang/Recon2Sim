@@ -29,6 +29,9 @@ ROLES = {
 def init():
     configs = []
     for sid in IDS:
+        if sid == '157116':
+            configs.append(read(PROJECT / 'configs' / (sid + '.json')))
+            continue
         static = WORKSPACE / 'static_data' / ('environment_reconstruction_' + sid)
         dynamic = WORKSPACE / 'dynamic_data' / ('dynamic_replay_' + sid)
         video = [p for p in (WORKSPACE / 'data').iterdir() if sid in p.name]
@@ -106,6 +109,9 @@ def blender_exe():
 
 
 def build_static(sid, mesh=True):
+    if sid == '157116':
+        from .fourview157116 import static
+        return static(sid, mesh)
     cfg = read(PROJECT / 'configs' / (sid + '.json'))
     stage(sid)
     root = PROJECT / 'work' / ('environment_reconstruction_' + sid)
@@ -157,8 +163,13 @@ def build_dynamic(sid, regenerate=True):
     xodr = PROJECT / 'outputs' / sid / 'map' / (cfg['name'] + '.xodr')
     if not xodr.exists():
         raise ValueError('Static stage required first')
+    root.mkdir(parents=True, exist_ok=True)
     shutil.copy2(xodr, root / xodr.name)
-    if regenerate:
+    if sid == '157116':
+        from .fourview157116 import generate
+        generate(sid)
+        source_path = root / 'scenario.json'
+    elif regenerate:
         run_log([sys.executable, PROJECT / 'scripts' / 'run_recipe.py', root / 'scripts' / 'generate_scenario.py'], PROJECT / 'outputs' / sid / 'validation' / 'dynamic_build.log', work)
         source_path = root / 'scenario.json'
     else:
@@ -192,6 +203,7 @@ def build_dynamic(sid, regenerate=True):
         for s, p, speed in zip(samples, pos, speeds):
             r = dict(actor_id=a['id'], replay_time_s=s['t'], source_video_time_s=s.get('video_t', s['t']+source['source_video_start_s']),
                      x=p[0], y=p[1], z=p[2], yaw_carla_deg=wrap(-math.degrees(s['h'])), speed=float(speed))
+            if sid == '157116': r['roll_carla_deg'] = s.get('roll_carla_deg', 0.0)
             actor_rows.append(r)
         rows.extend(actor_rows)
         kind = entity_type(a)
@@ -226,14 +238,20 @@ def build_dynamic(sid, regenerate=True):
           friction_coefficient=0.55 if sid=='ANA031' else 0.85, friction_status='assumed dimensionless; not measured',
           weather_status='estimated replay settings, not meteorological measurements',
           preserve_post_collision_state=True, collision_mode='kinematic recorded poses; no physical collision reconstruction',
-          video_dir=cfg['video_dir'], camera_file_time_offsets_s=cfg['camera_file_time_offsets_s'], camera_sync_status=cfg['camera_sync_status'],
+          video_dir=cfg['video_dir'], video_files=cfg.get('video_files',{}), camera_file_time_offsets_s=cfg['camera_file_time_offsets_s'], camera_sync_status=cfg['camera_sync_status'],
           events=source.get('events', []), source_limitations=source.get('limitations', []),
           reconstruction_method=source.get('reconstruction_method'), all_video_actors_verified=False,
           raw_video_full_duration_verified=False, carla_runtime_verified=False,
           provenance=dict(mode='regenerated_reviewed_recipes' if regenerate else 'normalized_existing_result',
                           source_scenario_sha256=sha(source_path), xodr_sha256=sha(xodr)))
+    if sid == '157116':
+        scene.update(capture_image_format='jpg', capture_jpeg_quality=93, critical_time_s=15.7, title=cfg['title'], camera_model='fisheye', camera_calibration_status=cfg.get('camera_calibration_status','not supplied'), static_revision='detailed_v2')
+        scene['provenance']['mode']='four_camera_visual_estimated_anchors'
     write(out / 'scene_config.json', scene)
     write(out / 'source_anchors.json', [{k:v for k,v in a.items() if k!='samples'} for a in source['actors']])
+    if sid == '157116':
+        write(out / 'validation' / 'legacy_comparison.json', dict(applicable=False, note='New four-camera case; no legacy reconstruction exists.'))
+        return
     # Direct comparison to final legacy results exposes refinements absent from the generator.
     legacy = read(WORKSPACE / 'dynamic_data' / ('dynamic_replay_' + sid) / 'scenario.json')
     diffs = {}

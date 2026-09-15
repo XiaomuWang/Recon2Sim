@@ -92,8 +92,29 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "lead_white": 0,
+    "silver_pass": 0,
+    "early_minivan": 0,
+    "dark_pass": 0,
+    "silver_suv_left": 0,
+    "box_truck": 0,
+    "white_mpv_pass": 0,
+    "oncoming_white": 0,
+    "cross_gray_suv": 0,
+    "late_black": 0,
+    "late_blue": 0,
+    "honda_wait": 0,
+    "late_silver": 0,
+    "cargo_trike": 0,
+    "late_white": 0,
+    "late_white_mpv": 0,
+    "last_suv": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "box_truck",
     "cargo_trike",
@@ -420,6 +441,10 @@
     "tire_friction": 0.85,
     "friction_application": "per native vehicle wheel; no overlap trigger",
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Four-view manual identity/time anchors, static optical-flow stop corroboration, PCHIP metric path interpolation on existing estimated map. No calibrated multi-camera triangulation."
   },
   "road_surface_check": {
     "misses": 0,

@@ -93,8 +93,8 @@ def compose(sid):
 
 def refresh():
     from . import report_highlights,report_page
-    report_highlights.REPORT_IDS=ORDER;report_highlights.build()
-    report_page.REPORT_IDS=ORDER;report_page.NAMES={sid:report_page.NAMES[sid] for sid in ORDER};report_page.build()
+    report_highlights.build()
+    report_page.build()
 
 
 def promote():

@@ -1,4 +1,4 @@
-"""Seven-scene, evidence-preserving accident reconstruction."""
+"""Evidence-preserving accident reconstruction."""
 import os
 import sys
 from pathlib import Path

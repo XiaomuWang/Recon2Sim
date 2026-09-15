@@ -47,10 +47,12 @@ def export():
                 'full_duration_capture', 'fbx_runtime_verified', 'imported_geometry_complete',
                 'imported_environment_object_count', 'missing_actor_ids', 'activated_actor_ids',
                 'max_ego_origin_error_m', 'max_actor_origin_errors_m', 'max_actor_yaw_errors_deg',
-                'command_submission', 'chase_camera', 'fresh_world_loaded',
+                'command_submission', 'chase_camera', 'fresh_world_loaded', 'kinematic', 'physical_collision_validated', 'max_actor_roll_errors_deg',
                 'hybrid_reconstruction', 'physical_collision_validated', 'recorded_actor_ids',
                 'motion_actor_ids', 'motion_tracking_accepted', 'motion']
         public = {key: report[key] for key in keys if key in report}
+        config=read(source / sid / 'scene_config.json')
+        public['reconstruction']={k:config[k] for k in ['camera_model','camera_calibration_status','static_revision','collision_mode','reconstruction_method'] if k in config}
         surface = report.get('engine_surface_check', {})
         public['road_surface_check'] = {key: surface[key] for key in ['misses', 'max_error_m'] if key in surface}
         public['scope'] = 'Published summary of completed runtime verification; execution consistency is not real-world reconstruction accuracy.'
@@ -62,9 +64,10 @@ def export():
     if [c['scene_id'] for c in highlight['clips']] != [s['id'] for s in scenes]:
         raise RuntimeError('Highlight and page scene order differ')
     copy('presentation/' + highlight.get('video_file', 'highlights.mp4'), 'presentation/highlights.mp4')
+    highlight_label=str(len(scenes))+' 组事故重点片段 · '+str(round(highlight['duration_s']))+' 秒'
     # The homepage excludes installation-package and legacy offline-report links.
     html, count = re.subn(r'<div class="actions" style="margin-bottom:20px">.*?</div>',
-                         '<div class="actions" style="margin-bottom:20px"><a href="presentation/highlights.mp4" target="_blank">七组事故重点片段 · 84 秒</a></div>', html, count=1, flags=re.S)
+                         '<div class="actions" style="margin-bottom:20px"><a href="presentation/highlights.mp4" target="_blank">'+highlight_label+'</a></div>', html, count=1, flags=re.S)
     if count != 1:
         raise RuntimeError('Global download section not found')
     html = re.sub(r'<a href="offline\.html"[^>]*>.*?</a>', '', html)

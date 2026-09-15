@@ -103,8 +103,36 @@
   "command_submission": "apply_batch_sync before tick",
   "chase_camera": "independent world camera; heading smoothing time constant 1 s",
   "fresh_world_loaded": true,
-  "hybrid_reconstruction": true,
+  "kinematic": false,
   "physical_collision_validated": false,
+  "max_actor_roll_errors_deg": {
+    "ego": 0,
+    "gray_departing_sedan": 0,
+    "dark_front_suv": 0,
+    "inner_black_mpv": 0,
+    "green_delivery_van": 0,
+    "silver_minivan": 0,
+    "red_tanker": 0,
+    "front_brown_truck": 0,
+    "inner_red_truck": 0,
+    "parked_00": 0,
+    "parked_01": 0,
+    "parked_02": 0,
+    "parked_03": 0,
+    "parked_04": 0,
+    "right_dark_sedan_1": 0,
+    "right_dark_sedan_2": 0,
+    "white_box_truck": 0,
+    "white_sedan_middle": 0,
+    "small_white_van": 0,
+    "red_inner_sedan": 0,
+    "bus_teal": 0,
+    "bus_yellow_ad": 0,
+    "late_white_suv": 0,
+    "late_black_sedan": 0,
+    "late_flatbed": 0
+  },
+  "hybrid_reconstruction": true,
   "recorded_actor_ids": [
     "bus_teal",
     "bus_yellow_ad",
@@ -278,6 +306,10 @@
     "tire_friction": 0.85,
     "friction_application": "per native vehicle wheel; no overlap trigger",
     "free_collision_dynamics_validated": false
+  },
+  "reconstruction": {
+    "collision_mode": "kinematic recorded poses; no physical collision reconstruction",
+    "reconstruction_method": "Four-camera manual identity/event anchors, stationary-landmark ego timing, PCHIP spatial interpolation. Static-flow diagnostic rejected as metric input because repeated frames collapse median flow. No calibrated 3D tracking."
   },
   "road_surface_check": {
     "misses": 0,

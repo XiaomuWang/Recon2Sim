@@ -128,7 +128,7 @@ def aim(position,target):
     camera.location=position;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler()
 
 critical={'014346':17,'019742':110,'016955':114,'024388':64,'0512189':85,'0508656':82,'ANA031':26.8}
-times=sorted(set([0,max(0,critical[cfg['scene_id']]-3),critical[cfg['scene_id']],min(cfg['duration_s'],critical[cfg['scene_id']]+4)]))
+times=sorted(set([0,max(0,critical.get(cfg['scene_id'],cfg.get('critical_time_s',cfg['duration_s']/2))-3),critical.get(cfg['scene_id'],cfg.get('critical_time_s',cfg['duration_s']/2)),min(cfg['duration_s'],critical.get(cfg['scene_id'],cfg.get('critical_time_s',cfg['duration_s']/2))+4)]))
 renders=[]
 for idx,t in enumerate(times):
     for e in mapping['actors']:
